@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "eslint": "^9.15.0",
+    "turbo": "^2.3.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "nest start",
+    "lint": "pnpm -r lint"
+  },
+  "packageManager": "pnpm@9.4.0"
+}
