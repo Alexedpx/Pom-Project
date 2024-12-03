@@ -6,6 +6,7 @@ import Choices from './components/features/Choices'
 function App(): JSX.Element {
 
 
+
   return (
     <I18nextProvider i18n={i18n}>
       <Choices />
