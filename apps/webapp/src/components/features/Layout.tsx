@@ -11,7 +11,7 @@ function Layout({ children, background, vector }: PropsWithChildren<{ background
 
 function Header({ children }: PropsWithChildren) {
     return (
-        <div className="absolute h-1/4  w-full flex justify-center items-center  ">
+        <div className="absolute h-1/3  w-full flex justify-center items-center  ">
             {children}
         </div>
     )
@@ -19,7 +19,7 @@ function Header({ children }: PropsWithChildren) {
 
 function Content({ children }: PropsWithChildren) {
     return (
-        <div className="flex text-center flex-grow w-full items-center justify-center pt-48">
+        <div className="flex text-center flex-grow w-full items-center mt-52 justify-center">
             {children}
         </div>
     )
