@@ -1,7 +1,22 @@
 {
   "Choices": {
-    "hello": "Hello !",
-    "selectYourMood": "Veuillez sélectionner votre humeur",
-    "howDoYouFeelToday": "Comment vous sentez-vous aujourd'hui ?"
+    "header": {
+      "hello": "Hello !"
+    },
+    "content": {
+      "howDoYouFeelToday": "Comment vous sentez-vous aujourd'hui ?"
+    },
+    "footer": {
+      "selectYourMood": "Veuillez sélectionner votre humeur"
+    },
+    "buttons": {
+      "validate": "Valider"
+    },
+    "moods": {
+      "veryGood": "Très bien !",
+      "good": "Bien",
+      "quiteSad": "Plutôt Triste",
+      "angry": "En colère"
+    }
   }
 }

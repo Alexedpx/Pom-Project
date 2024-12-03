@@ -1,14 +1,9 @@
 import { PropsWithChildren } from "react"
-import BgDefault from '../../assets/background/BgDefault.png'
-// import BgVhappy from '../../assets/background/BgVhappy.png'
-// import BgHappy from '../../assets/background/BgHappy.png'
-// import BgSad from '../../assets/background/BgSad.png'
-// import BgAngry from '../../assets/background/BgAngry.png'
 
-function Layout({ children }: PropsWithChildren) {
+function Layout({ children, background, vector }: PropsWithChildren<{ background: string, vector: string }>) {
     return (
-        <div className="relative w-full h-screen text-tertiary-foreground flex flex-col bg-tertiary">
-            <img src={BgDefault} alt="Background" className="absolute top-0 left-0 w-full h-auto" />
+        <div className={`relative w-full h-screen text-tertiary-foreground flex flex-col ${background}`}>
+            <img src={`${vector}`} alt="Background" className="absolute top-0 left-0 w-full h-auto" />
             {children}
         </div>
     )
@@ -24,7 +19,7 @@ function Header({ children }: PropsWithChildren) {
 
 function Content({ children }: PropsWithChildren) {
     return (
-        <div className="flex text-center flex-grow w-full items-center justify-center pt-48 ">
+        <div className="flex text-center flex-grow w-full items-center justify-center pt-48">
             {children}
         </div>
     )

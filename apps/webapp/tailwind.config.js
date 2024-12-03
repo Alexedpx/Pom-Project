@@ -32,6 +32,22 @@ module.exports = {
           DEFAULT: 'hsl(var(--tertiary))',
           foreground: 'hsl(var(--tertiary-foreground))',
         },
+        veryHappy: {
+          DEFAULT: 'hsl(var(--veryHappy))',
+          foreground: 'hsl(var(--veryHappy-foreground))',
+        },
+        happy: {
+          DEFAULT: 'hsl(var(--happy))',
+          foreground: 'hsl(var(--happy-foreground))',
+        },
+        sad: {
+          DEFAULT: 'hsl(var(--sad))',
+          foreground: 'hsl(var(--sad-foreground))',
+        },
+        angry: {
+          DEFAULT: 'hsl(var(--angry))',
+          foreground: 'hsl(var(--angry-foreground))',
+        },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
