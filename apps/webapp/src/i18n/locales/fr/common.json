@@ -1,1 +1,7 @@
-{}
+{
+  "Choices": {
+    "hello": "Hello !",
+    "selectYourMood": "Veuillez sélectionner votre humeur",
+    "howDoYouFeelToday": "Comment vous sentez-vous aujourd'hui ?"
+  }
+}
