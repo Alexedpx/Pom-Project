@@ -60,7 +60,13 @@ module.exports = {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
-        border: 'hsl(var(--border))',
+        softBlue: {
+          DEFAULT: 'hsl(var(--softBlue))',
+        },
+        lightBlue: {
+          DEFAULT: 'hsl(var(--lightBlue))',
+        },
+
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         chart: {

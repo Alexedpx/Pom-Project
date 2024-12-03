@@ -27,7 +27,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "w-[335px] h-[55px] rounded-[40px]",
-        icon: "h-[64px] w-[64px] rounded-full",
+        icon: "h-[60px] w-[60px] rounded-full",
       },
     },
     defaultVariants: {
@@ -41,19 +41,18 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  iconRight?: React.ReactNode
 }
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+  ({ className, variant, size, children, iconRight, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : 'button'
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
+      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+        {children}
+        {iconRight}
+      </Comp>
     )
-  }
+  },
 )
 Button.displayName = "Button"
 

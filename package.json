@@ -8,5 +8,8 @@
     "start": "nest start",
     "lint": "pnpm -r lint"
   },
-  "packageManager": "pnpm@9.4.0"
+  "packageManager": "pnpm@9.4.0",
+  "dependencies": {
+    "@souhaildev/reactemojis": "^1.0.5"
+  }
 }

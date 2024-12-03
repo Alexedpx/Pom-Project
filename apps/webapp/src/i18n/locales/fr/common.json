@@ -9,7 +9,7 @@
     "footer": {
       "selectYourMood": "Veuillez sélectionner votre humeur"
     },
-    "buttons": {
+    "button": {
       "validate": "Valider"
     },
     "moods": {
