@@ -101,6 +101,7 @@ function Choices() {
                     {selectedIcon ? (
                         <h1 className="font-semibold text-4xl text-white">{getMoodText(selectedIcon)}</h1>
                     ) : (
+
                         <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
                     )}
 

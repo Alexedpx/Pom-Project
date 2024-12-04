@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import BgHomepage from '../../assets/background/BgHomepage.png';
 
 
+
 const getDate = () => {
     const today = new Date();
     const month = today.getMonth() + 1;
@@ -10,7 +11,7 @@ const getDate = () => {
     return `${date}/${month}`;
 }
 
-function Calendar() {
+function MoodCalendar() {
     const [background] = useState('bg-tertiary');
     const [vector] = useState<string>(BgHomepage);
     const [userMood, setUserMood] = useState<string | null>(null);
@@ -39,9 +40,10 @@ function Calendar() {
                     </div>
                 </div>
             </Layout.Header>
+
             <Layout.Footer></Layout.Footer>
         </Layout>
     );
 }
 
-export default Calendar;
+export default MoodCalendar;
