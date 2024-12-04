@@ -8,7 +8,6 @@
     "baseUrl": "./",
     "paths": {
       "@shared-dtos/*": ["libs/shared-dtos/src/*"],
-      "@backend/*": ["apps/backend/src/*"],
       "@webapp/*": ["apps/webapp/src/*"]
     },
     "strict": true,

@@ -1,4 +1,10 @@
 {
+  "name": "pom-project",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "devDependencies": {
     "eslint": "^9.15.0",
     "typescript": "^5.7.2"

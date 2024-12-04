@@ -14,6 +14,9 @@ import { toast, Toaster } from 'sonner';
 import { useNavigate } from 'react-router';
 import EmojiButton from './buttons/EmojiButtons';
 import { EmojiType } from '@/typings/emoji.types';
+import { Moods } from '@pom/shared-dtos';
+
+
 
 
 
@@ -27,6 +30,27 @@ function Choices() {
     const [selectedIcon, setSelectedIcon] = useState<EmojiType | null>(null);
     const emojis: EmojiType[] = ['😀', '🙂', '😓', '😡', '🥱'];
 
+    const testMood = (mood: Moods) => {
+        switch (mood) {
+            case Moods.VERYHAPPY:
+                console.log('The mood is VERY HAPPY!');
+                break;
+            case Moods.HAPPY:
+                console.log('The mood is HAPPY!');
+                break;
+            case Moods.SAD:
+                console.log('The mood is SAD.');
+                break;
+            case Moods.ANGRY:
+                console.log('The mood is ANGRY!');
+                break;
+            case Moods.TIRED:
+                console.log('The mood is TIRED...');
+                break;
+            default:
+                console.log('Unknown mood!');
+        }
+    };
 
     const handleIconClick = (icon: EmojiType) => {
         setSelectedIcon(icon);
