@@ -48,6 +48,10 @@ module.exports = {
           DEFAULT: 'hsl(var(--angry))',
           foreground: 'hsl(var(--angry-foreground))',
         },
+        tired: {
+          DEFAULT: 'hsl(var(--tired))',
+          foreground: 'hsl(var(--tired-foreground))',
+        },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
