@@ -12,8 +12,10 @@ import { Check } from 'lucide-react';
 import ReactEmojis from "@souhaildev/reactemojis";
 import { toast, Toaster } from 'sonner';
 import { useNavigate } from 'react-router';
+import EmojiButton from './buttons/EmojiButtons';
+import { EmojiType } from '@/typings/emoji.types';
 
-type EmojiType = "😀" | "🙂" | "😓" | "😡" | "🥱";
+
 
 function Choices() {
     const { t } = useTranslation('common', {
@@ -23,6 +25,8 @@ function Choices() {
     const [background, setBackground] = useState('bg-tertiary');
     const [vector, setVector] = useState<string>(BgDefault);
     const [selectedIcon, setSelectedIcon] = useState<EmojiType | null>(null);
+    const emojis: EmojiType[] = ['😀', '🙂', '😓', '😡', '🥱'];
+
 
     const handleIconClick = (icon: EmojiType) => {
         setSelectedIcon(icon);
@@ -124,41 +128,9 @@ function Choices() {
                 </Layout.Content>
                 <Layout.Footer>
                     <div className="flex gap-3 justify-center">
-                        <Button
-                            variant="icon"
-                            size="icon"
-                            onClick={() => handleIconClick('😀')}
-                        >
-                            <ReactEmojis emoji='😀' emojiStyle='3' style={{ width: 40, height: 40 }} />
-                        </Button>
-                        <Button
-                            variant="icon"
-                            size="icon"
-                            onClick={() => handleIconClick('🙂')}
-                        >
-                            <ReactEmojis emoji='🙂' emojiStyle='3' style={{ width: 40, height: 40 }} />
-                        </Button>
-                        <Button
-                            variant="icon"
-                            size="icon"
-                            onClick={() => handleIconClick('😓')}
-                        >
-                            <ReactEmojis emoji='😓' emojiStyle='3' style={{ width: 40, height: 40 }} />
-                        </Button>
-                        <Button
-                            variant="icon"
-                            size="icon"
-                            onClick={() => handleIconClick('😡')}
-                        >
-                            <ReactEmojis emoji='😡' emojiStyle='3' style={{ width: 40, height: 40 }} />
-                        </Button>
-                        <Button
-                            variant="icon"
-                            size="icon"
-                            onClick={() => handleIconClick('🥱')}
-                        >
-                            <ReactEmojis emoji='🥱' emojiStyle='3' style={{ width: 40, height: 40 }} />
-                        </Button>
+                        {emojis.map((emoji) => (
+                            <EmojiButton key={emoji} emoji={emoji} onClick={handleIconClick} />
+                        ))}
                     </div>
                     <div className="flex justify-center ">
                         {selectedIcon ? (
