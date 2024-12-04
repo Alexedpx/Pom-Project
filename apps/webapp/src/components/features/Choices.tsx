@@ -83,15 +83,15 @@ function Choices() {
     const handleValidate = () => {
         if (selectedIcon) {
             localStorage.setItem('userMood', selectedIcon);
-            toast.success('Mood saved !');
+            toast.success('mood saved !');
+            setTimeout(() => {
+                navigate('/homepage');
+            }, 1500);
+        } else {
+            toast.error('mood not saved');
         }
-        setTimeout(() => {
-            navigate('/homepage');
-        }, 1500);
+        console.log('icons', selectedIcon)
     };
-    const savedMood = localStorage.getItem('userMood');
-    console.log(savedMood);
-
 
     return (
         <>
@@ -101,6 +101,7 @@ function Choices() {
                     {selectedIcon ? (
                         <h1 className="font-semibold text-4xl text-white">{getMoodText(selectedIcon)}</h1>
                     ) : (
+
                         <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
                     )}
 
