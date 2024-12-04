@@ -7,12 +7,13 @@ import BgVhappy from '../../assets/background/BgVhappy.png';
 import BgHappy from '../../assets/background/BgHappy.png';
 import BgSad from '../../assets/background/BgSad.png';
 import BgAngry from '../../assets/background/BgAngry.png';
+import BgTired from '../../assets/background/BgTired.png';
 import { Check } from 'lucide-react';
 import ReactEmojis from "@souhaildev/reactemojis";
 import { toast, Toaster } from 'sonner';
 import { useNavigate } from 'react-router';
 
-type EmojiType = "😀" | "🙂" | "😓" | "😡";
+type EmojiType = "😀" | "🙂" | "😓" | "😡" | "🥱";
 
 function Choices() {
     const { t } = useTranslation('common', {
@@ -42,6 +43,10 @@ function Choices() {
                 setBackground('bg-angry');
                 setVector(BgAngry);
                 break;
+            case '🥱':
+                setBackground('bg-tired');
+                setVector(BgTired);
+                break;
             default:
                 setBackground('bg-tertiary');
                 setVector(BgDefault);
@@ -59,6 +64,8 @@ function Choices() {
                 return 'sad';
             case '😡':
                 return 'angry';
+            case '🥱':
+                return 'tired';
             default:
                 return 'default';
         }
@@ -69,11 +76,13 @@ function Choices() {
             case '😀':
                 return t('moods.veryGood');
             case '🙂':
-                return t('moods.good');;
+                return t('moods.good');
             case '😓':
-                return t('moods.quiteSad');;
+                return t('moods.quiteSad');
             case '😡':
-                return t('moods.angry');;
+                return t('moods.angry');
+            case '🥱':
+                return t('moods.tired');
             default:
                 return 'default';
         }
@@ -114,34 +123,41 @@ function Choices() {
                     )}
                 </Layout.Content>
                 <Layout.Footer>
-                    <div className="flex justify-evenly">
+                    <div className="flex gap-3 justify-center">
                         <Button
                             variant="icon"
                             size="icon"
                             onClick={() => handleIconClick('😀')}
                         >
-                            <ReactEmojis emoji='😀' emojiStyle='3' style={{ width: 50, height: 50 }} />
+                            <ReactEmojis emoji='😀' emojiStyle='3' style={{ width: 40, height: 40 }} />
                         </Button>
                         <Button
                             variant="icon"
                             size="icon"
                             onClick={() => handleIconClick('🙂')}
                         >
-                            <ReactEmojis emoji='🙂' emojiStyle='3' style={{ width: 50, height: 50 }} />
+                            <ReactEmojis emoji='🙂' emojiStyle='3' style={{ width: 40, height: 40 }} />
                         </Button>
                         <Button
                             variant="icon"
                             size="icon"
                             onClick={() => handleIconClick('😓')}
                         >
-                            <ReactEmojis emoji='😓' emojiStyle='3' style={{ width: 50, height: 50 }} />
+                            <ReactEmojis emoji='😓' emojiStyle='3' style={{ width: 40, height: 40 }} />
                         </Button>
                         <Button
                             variant="icon"
                             size="icon"
                             onClick={() => handleIconClick('😡')}
                         >
-                            <ReactEmojis emoji='😡' emojiStyle='3' style={{ width: 50, height: 50 }} />
+                            <ReactEmojis emoji='😡' emojiStyle='3' style={{ width: 40, height: 40 }} />
+                        </Button>
+                        <Button
+                            variant="icon"
+                            size="icon"
+                            onClick={() => handleIconClick('🥱')}
+                        >
+                            <ReactEmojis emoji='🥱' emojiStyle='3' style={{ width: 40, height: 40 }} />
                         </Button>
                     </div>
                     <div className="flex justify-center ">

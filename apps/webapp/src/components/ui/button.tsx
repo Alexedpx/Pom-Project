@@ -10,11 +10,12 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary text-primary-foreground shadow-xl ",
-        icon: "border-2 bg-secondary ",
+        icon: "border-2 bg-secondary transition-transform duration-300 ease-in-out hover:scale-110",
         veryHappy: "bg-veryHappy-foreground shadow shadow-xl ",
         happy: "bg-happy-foreground shadow-xl ",
         sad: "bg-sad-foreground shadow-xl ",
         angry: "bg-angry-foreground shadow-xl ",
+        tired: "bg-tired-foreground shadow-xl",
 
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
