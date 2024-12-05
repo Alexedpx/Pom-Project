@@ -1,17 +1,16 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactElement } from "react";
 
-function Layout({ children, background, vector }: PropsWithChildren<{ background: string, vector: string }>) {
+function Layout({ children, background, svg }: PropsWithChildren<{ background: string, svg: ReactElement }>) {
     return (
-        <div className={`relative w-full h-screen text-tertiary-foreground flex flex-col ${background}`}>
-            <img
-                src={`${vector}`}
-                alt="Background"
-                className="absolute top-0 left-0 w-full h-auto xl:hidden"
-            />
+        <div className={` w-full h-screen text-tertiary-foreground flex flex-col ${background} relative`}>
+            <div className="absolute w-full xl:h-[50%] ">
+                {svg}
+            </div>
             {children}
         </div>
     );
 }
+
 
 function Header({ children }: PropsWithChildren) {
     return (

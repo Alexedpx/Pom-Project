@@ -2,22 +2,23 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '../ui/button';
 import Layout from './Layout';
 import { useState } from 'react';
-import BgDefault from '../../assets/background/BgDefault.png';
-import BgVhappy from '../../assets/background/BgVhappy.png';
-import BgHappy from '../../assets/background/BgHappy.png';
-import BgSad from '../../assets/background/BgSad.png';
-import BgAngry from '../../assets/background/BgAngry.png';
-import BgTired from '../../assets/background/BgTired.png';
 import { Check } from 'lucide-react';
 import ReactEmojis from "@souhaildev/reactemojis";
 import { toast, Toaster } from 'sonner';
 import { useNavigate } from 'react-router';
 import EmojiButton from './buttons/EmojiButtons';
-import { EmojiType } from '@/typings/emoji.types';
 import { Moods } from '@pom/shared-dtos';
+import { MoodProperties } from '@/typings/moodProperties.type';
+import CustomSvg from './background/MoodSvg';
 
-
-
+// eslint-disable-next-line react-refresh/only-export-components
+export const moodProperties: Record<Moods, MoodProperties> = {
+    [Moods.VERY_GOOD]: { emoji: '😀', background: 'bg-veryHappy', moodSvg: <CustomSvg fill="#89B892" />, text: 'moods.veryGood', buttonVariant: 'veryHappy', },
+    [Moods.GOOD]: { emoji: '🙂', background: 'bg-happy', moodSvg: <CustomSvg fill="#FECF58" />, text: 'moods.good', buttonVariant: 'happy', },
+    [Moods.QUITE_SAD]: { emoji: '😓', background: 'bg-sad', moodSvg: <CustomSvg fill="#4D70A4" />, text: 'moods.quiteSad', buttonVariant: 'sad', },
+    [Moods.ANGRY]: { emoji: '😡', background: 'bg-angry', moodSvg: <CustomSvg fill="#DEA097" />, text: 'moods.angry', buttonVariant: 'angry', },
+    [Moods.TIRED]: { emoji: '🥱', background: 'bg-tired', moodSvg: <CustomSvg fill="#4E395B" />, text: 'moods.tired', buttonVariant: 'tired', },
+};
 
 
 function Choices() {
@@ -25,144 +26,78 @@ function Choices() {
         keyPrefix: 'Choices',
     });
     const navigate = useNavigate()
-    const [background, setBackground] = useState('bg-tertiary');
-    const [vector, setVector] = useState<string>(BgDefault);
-    const [selectedIcon, setSelectedIcon] = useState<EmojiType | null>(null);
-    const emojis: EmojiType[] = ['😀', '🙂', '😓', '😡', '🥱'];
+    const [selectedMood, setSelectedMood] = useState<Moods | null>(null);
+    // Permet de définir si un emoji est sélectionné, sinon met les valeurs par défaut
+    const currentMood = selectedMood ? moodProperties[selectedMood] : null;
 
-    const testMood = (mood: Moods) => {
-        switch (mood) {
-            case Moods.VERYHAPPY:
-                console.log('The mood is VERY HAPPY!');
-                break;
-            case Moods.HAPPY:
-                console.log('The mood is HAPPY!');
-                break;
-            case Moods.SAD:
-                console.log('The mood is SAD.');
-                break;
-            case Moods.ANGRY:
-                console.log('The mood is ANGRY!');
-                break;
-            case Moods.TIRED:
-                console.log('The mood is TIRED...');
-                break;
-            default:
-                console.log('Unknown mood!');
-        }
+
+    // Change les propriétés selon l'emoji sélectionné
+    const handleIconClick = (mood: Moods) => {
+        setSelectedMood(mood);
     };
 
-    const handleIconClick = (icon: EmojiType) => {
-        setSelectedIcon(icon);
-        switch (icon) {
-            case '😀':
-                setBackground('bg-veryHappy');
-                setVector(BgVhappy);
-                break;
-            case '🙂':
-                setBackground('bg-happy');
-                setVector(BgHappy);
-                break;
-            case '😓':
-                setBackground('bg-sad');
-                setVector(BgSad);
-                break;
-            case '😡':
-                setBackground('bg-angry');
-                setVector(BgAngry);
-                break;
-            case '🥱':
-                setBackground('bg-tired');
-                setVector(BgTired);
-                break;
-            default:
-                setBackground('bg-tertiary');
-                setVector(BgDefault);
-                break;
-        }
-    };
-
-    const getButtonVariant = (icon: string | null) => {
-        switch (icon) {
-            case '😀':
-                return 'veryHappy';
-            case '🙂':
-                return 'happy';
-            case '😓':
-                return 'sad';
-            case '😡':
-                return 'angry';
-            case '🥱':
-                return 'tired';
-            default:
-                return 'default';
-        }
-    };
-
-    const getMoodText = (text: string | null) => {
-        switch (text) {
-            case '😀':
-                return t('moods.veryGood');
-            case '🙂':
-                return t('moods.good');
-            case '😓':
-                return t('moods.quiteSad');
-            case '😡':
-                return t('moods.angry');
-            case '🥱':
-                return t('moods.tired');
-            default:
-                return 'default';
-        }
-    };
-
-
+    // Enregistre l'emoji sélectionné dans le localstorage
     const handleValidate = () => {
-        if (selectedIcon) {
-            localStorage.setItem('userMood', selectedIcon);
-            toast.success('mood saved !');
-            setTimeout(() => {
-                navigate('/homepage');
-            }, 1500);
+        if (selectedMood) {
+            localStorage.setItem('userMood', selectedMood);
+            toast.success('Your mood has been saved !');
+            setTimeout(() => navigate('/homepage'), 1500);
         } else {
-            toast.error('mood not saved');
+            toast.error(t('toast.error'));
         }
-        console.log('icons', selectedIcon)
     };
 
     return (
         <>
             <Toaster position="top-center" />
-            <Layout background={background} vector={vector}>
+            <Layout
+                background={currentMood?.background || 'bg-tertiary'}
+                svg={currentMood?.moodSvg || <CustomSvg />}
+            >
                 <Layout.Header>
-                    {selectedIcon ? (
-                        <h1 className="font-semibold text-4xl text-white">{getMoodText(selectedIcon)}</h1>
+                    {selectedMood ? (
+                        <h1 className="font-semibold text-4xl text-white">
+                            {t(moodProperties[selectedMood].text)}
+                        </h1>
                     ) : (
-
                         <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
                     )}
-
                 </Layout.Header>
                 <Layout.Content>
-                    {selectedIcon ? (
-                        <ReactEmojis emoji={selectedIcon} emojiStyle="3" style={{ width: 180, height: 180 }} />
+                    {selectedMood ? (
+                        <ReactEmojis
+                            emoji={moodProperties[selectedMood].emoji}
+                            emojiStyle="3"
+                            style={{ width: 180, height: 180 }}
+                        />
                     ) : (
                         <h2 className="font-semibold text-2xl">{t('content.howDoYouFeelToday')}</h2>
                     )}
                 </Layout.Content>
                 <Layout.Footer>
                     <div className="flex gap-3 justify-center">
-                        {emojis.map((emoji) => (
-                            <EmojiButton key={emoji} emoji={emoji} onClick={handleIconClick} />
+                        {Object.values(Moods).map((mood) => (
+                            <EmojiButton
+                                key={mood}
+                                emoji={moodProperties[mood].emoji}
+                                onClick={() => handleIconClick(mood)}
+                            />
                         ))}
                     </div>
-                    <div className="flex justify-center ">
-                        {selectedIcon ? (
-                            <Button onClick={handleValidate} variant={getButtonVariant(selectedIcon)} size='default' className='text-xl font-normal text-white' iconRight={<Check className="ml-1" />}>{t('button.validate')}</Button>
+                    <div className="flex justify-center">
+                        {selectedMood ? (
+                            <Button
+                                onClick={handleValidate}
+                                variant={moodProperties[selectedMood].buttonVariant}
+                                size="default"
+                                className="text-xl font-normal text-white"
+                                iconRight={<Check className="ml-1" />}
+                            >a
+                                {t('button.validate')}
+                            </Button>
                         ) : (
                             <p className="text-base">{t('footer.selectYourMood')}</p>
                         )}
-
                     </div>
                 </Layout.Footer>
             </Layout>

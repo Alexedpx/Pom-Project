@@ -1,7 +1,7 @@
 export enum Moods {
-  VERYHAPPY = 'VERYHAPPY',
-  HAPPY = 'HAPPY',
-  SAD = 'SAD',
+  VERY_GOOD = 'VERY_GOOD',
+  GOOD = 'GOOD',
+  QUITE_SAD = 'QUITE_SAD',
   ANGRY = 'ANGRY',
   TIRED = 'TIRED',
 }
