@@ -2,8 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "shared": ["packages/shared-dtos/src"]
+      "@shared-dtos": ["libs/shared-dtos/src"]
     }
   },
-  "include": ["apps/**/*", "packages/**/*"]
+  "include": ["apps/**/*", "libs/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
