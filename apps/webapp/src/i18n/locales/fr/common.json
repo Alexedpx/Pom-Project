@@ -19,5 +19,11 @@
       "angry": "En colère",
       "tired": "Fatigué"
     }
+  },
+
+  "MoodCalendar": {
+    "title": {
+      "myWeek": "Ma semaine"
+    }
   }
 }
