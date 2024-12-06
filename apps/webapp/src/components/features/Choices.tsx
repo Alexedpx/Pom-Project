@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router'
 import EmojiButton from './buttons/EmojiButtons'
 import { Moods } from '@pom/shared-dtos'
 import CustomSvg from './background/MoodSvg'
-import { moodProperties } from '../../utils/moodProperties'
+import { moodsProperties } from '../../utils/moodsProperties'
 
 function Choices() {
   const { t } = useTranslation('common', {
@@ -17,7 +17,7 @@ function Choices() {
   })
   const navigate = useNavigate()
   const [selectedMood, setSelectedMood] = useState<Moods | null>(null)
-  const currentMood = selectedMood ? moodProperties[selectedMood] : null
+  const currentMood = selectedMood ? moodsProperties[selectedMood] : null
 
   // Change les propriétés selon l'emoji sélectionné
   const handleIconClick = (mood: Moods) => {
@@ -43,15 +43,15 @@ function Choices() {
       >
         <Layout.Header className="absolute h-1/3 w-full flex justify-center items-center flex-col">
           {selectedMood ? (
-            <h1 className="font-semibold text-4xl text-white">{t(moodProperties[selectedMood].text)}</h1>
+            <h1 className="font-semibold text-4xl text-white">{t(moodsProperties[selectedMood].text)}</h1>
           ) : (
             <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
           )}
         </Layout.Header>
-        <Layout.Content>
+        <Layout.Content className="flex text-center flex-grow w-full items-center mt-52 justify-center">
           {selectedMood ? (
             <ReactEmojis
-              emoji={moodProperties[selectedMood].emoji}
+              emoji={moodsProperties[selectedMood].emoji}
               emojiStyle="3"
               style={{ width: 180, height: 180 }}
             />
@@ -64,7 +64,7 @@ function Choices() {
             {Object.values(Moods).map((mood) => (
               <EmojiButton
                 key={mood}
-                emoji={moodProperties[mood].emoji}
+                emoji={moodsProperties[mood].emoji}
                 onClick={() => handleIconClick(mood)}
               />
             ))}
@@ -73,7 +73,7 @@ function Choices() {
             {selectedMood ? (
               <Button
                 onClick={handleValidate}
-                variant={moodProperties[selectedMood].buttonVariant}
+                variant={moodsProperties[selectedMood].buttonVariant}
                 size="default"
                 className="text-xl font-normal text-white"
                 iconRight={<Check className="ml-1" />}

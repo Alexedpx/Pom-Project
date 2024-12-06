@@ -13,8 +13,8 @@ function Header({ children, className }: PropsWithChildren<{ className: string }
   return <div className={className}>{children}</div>
 }
 
-function Content({ children }: PropsWithChildren) {
-  return <div className="flex text-center flex-grow w-full items-center mt-52 justify-center">{children}</div>
+function Content({ children, className }: PropsWithChildren<{ className: string }>) {
+  return <div className={className}>{children}</div>
 }
 
 function Footer({ children }: PropsWithChildren) {

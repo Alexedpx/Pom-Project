@@ -24,6 +24,9 @@
   "MoodCalendar": {
     "title": {
       "myWeek": "Ma semaine"
+    },
+    "content": {
+      "yourDailyProgram": "Votre programme du jour"
     }
   }
 }
