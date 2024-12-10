@@ -13,9 +13,7 @@ module.exports = {
           '50%': {
             d: 'path("M0.00259399 248.858C150.5304 214.882 211.8907 142.076 405.189 337L420 -3H0.00259399V248.858C-30.0008545 202.146 -0.000854492 249.435 0.00259399 249.723V248.858Z")',
           },
-          // '75%': {
-          //   d: 'path("M0.00259399 248.858C150.5304 214.882 211.8907 142.076 405.189 337L420 -3H0.00259399V248.858C-30.0008545 202.146 -0.000854492 249.435 0.00259399 249.723V248.858Z")',
-          // },
+
           '100%': {
             d: 'path("M0.00259399 248.858C0.530426 204.882 81.8907 162.076 405.189 337L420 -3H0.00259399V248.858C-0.000854492 249.146 -0.000854492 249.435 0.00259399 249.723V248.858Z")',
           },
@@ -71,6 +69,26 @@ module.exports = {
         tired: {
           DEFAULT: 'hsl(var(--tired))',
           foreground: 'hsl(var(--tired-foreground))',
+        },
+        sporty: {
+          DEFAULT: 'hsl(var(--sporty))',
+          foreground: 'hsl(var(--sporty-foreground))',
+        },
+        audio: {
+          DEFAULT: 'hsl(var(--audio))',
+          foreground: 'hsl(var(--audio-foreground))',
+        },
+        cerebral: {
+          DEFAULT: 'hsl(var(--cerebral))',
+          foreground: 'hsl(var(--cerebral-foreground))',
+        },
+        relaxation: {
+          DEFAULT: 'hsl(var(--relaxation))',
+          foreground: 'hsl(var(--relaxation-foreground))',
+        },
+        creative: {
+          DEFAULT: 'hsl(var(--creative))',
+          foreground: 'hsl(var(--creative-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
