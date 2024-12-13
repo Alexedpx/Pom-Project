@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Tasks = void 0;
-var Tasks;
-(function (Tasks) {
-    Tasks["SPORTY"] = "SPORTY";
-    Tasks["CREATIVE"] = "CREATIVE";
-    Tasks["CEREBRAL"] = "CEREBRAL";
-    Tasks["AUDIO"] = "AUDIO";
-    Tasks["RELAXATION"] = "RELAXATION";
-})(Tasks || (exports.Tasks = Tasks = {}));
-//# sourceMappingURL=taskCategories.enum.js.map
+exports.TaskCategories = void 0;
+var TaskCategories;
+(function (TaskCategories) {
+    TaskCategories["SPORTY"] = "SPORTY";
+    TaskCategories["CREATIVE"] = "CREATIVE";
+    TaskCategories["CEREBRAL"] = "CEREBRAL";
+    TaskCategories["AUDIO"] = "AUDIO";
+    TaskCategories["RELAXATION"] = "RELAXATION";
+})(TaskCategories || (exports.TaskCategories = TaskCategories = {}));

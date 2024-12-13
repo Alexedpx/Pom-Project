@@ -7,6 +7,7 @@
 @layer base {
   :root {
     --primary: 277 20%, 47%;
+    --lightBlack: 229, 14%, 23%;
     --secondary: 215, 28%, 30%;
     --tertiary: 221, 20%, 20%;
     --lightBlue: 215, 24%, 51%;
@@ -14,7 +15,7 @@
     --sporty: 268, 19%, 59%;
     --audio: 223, 21%, 13%;
     --relaxation: 113, 22%, 67%;
-    --cerebral: 346, 41%, 65%;
+    --cerebral: 348, 48%, 75%;
     --creative: 30, 100%, 71%;
     --veryHappy: 132, 25%, 63%;
     --veryHappy-foreground: 132, 26%, 38%;

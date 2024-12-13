@@ -7,7 +7,7 @@ import ReactEmojis from '@souhaildev/reactemojis'
 import { toast, Toaster } from 'sonner'
 import { useNavigate } from 'react-router'
 import EmojiButton from './buttons/EmojiButtons'
-import { Moods } from '@pom/shared-dtos'
+import { MoodValues } from '@pom/shared-dtos'
 import CustomSvg from './background/MoodSvg'
 import { moodsProperties } from '../../utils/moodsProperties'
 
@@ -16,12 +16,12 @@ function Choices() {
     keyPrefix: 'Choices',
   })
   const navigate = useNavigate()
-  const [selectedMood, setSelectedMood] = useState<Moods | null>(null)
+  const [selectedMood, setSelectedMood] = useState<MoodValues | null>(null)
   const currentMood = selectedMood ? moodsProperties[selectedMood] : null
 
   // Change les propriétés selon l'emoji sélectionné
-  const handleIconClick = (mood: Moods) => {
-    setSelectedMood(mood)
+  const handleIconClick = (emoji: MoodValues) => {
+    setSelectedMood(emoji)
   }
 
   const handleValidate = () => {
@@ -41,14 +41,14 @@ function Choices() {
         background={currentMood?.background || 'bg-tertiary'}
         svg={currentMood?.moodSvg || <CustomSvg />}
       >
-        <Layout.Header className="absolute h-1/3 w-full flex justify-center items-center flex-col">
+        <Layout.Header>
           {selectedMood ? (
             <h1 className="font-semibold text-4xl text-white">{t(moodsProperties[selectedMood].text)}</h1>
           ) : (
             <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
           )}
         </Layout.Header>
-        <Layout.Content className="flex-grow w-full text-center items-center mt-52 justify-center">
+        <Layout.Content>
           {selectedMood ? (
             <ReactEmojis
               emoji={moodsProperties[selectedMood].emoji}
@@ -59,31 +59,30 @@ function Choices() {
             <h2 className="font-semibold text-2xl">{t('content.howDoYouFeelToday')}</h2>
           )}
         </Layout.Content>
-        <Layout.Footer>
-          <div className="flex gap-3 justify-center">
-            {Object.values(Moods).map((mood) => (
+        <Layout.Footer className="gap-8 flex-col ">
+          <div className="flex gap-2 justify-center">
+            {Object.values(MoodValues).map((emoji) => (
               <EmojiButton
-                key={mood}
-                emoji={moodsProperties[mood].emoji}
-                onClick={() => handleIconClick(mood)}
+                key={emoji}
+                emoji={moodsProperties[emoji].emoji}
+                onClick={() => handleIconClick(emoji)}
               />
             ))}
           </div>
-          <div className="flex justify-center">
-            {selectedMood ? (
-              <Button
-                onClick={handleValidate}
-                variant={moodsProperties[selectedMood].buttonVariant}
-                size="default"
-                className="text-xl font-normal text-white"
-                iconRight={<Check className="ml-1" />}
-              >
-                {t('button.validate')}
-              </Button>
-            ) : (
-              <p className="text-base">{t('footer.selectYourMood')}</p>
-            )}
-          </div>
+
+          {selectedMood ? (
+            <Button
+              onClick={handleValidate}
+              variant={moodsProperties[selectedMood].buttonVariant}
+              size="default"
+              className="text-xl font-normal text-white"
+              iconRight={<Check className="ml-1" />}
+            >
+              {t('button.validate')}
+            </Button>
+          ) : (
+            <p className="text-base">{t('footer.selectYourMood')}</p>
+          )}
         </Layout.Footer>
       </Layout>
     </>

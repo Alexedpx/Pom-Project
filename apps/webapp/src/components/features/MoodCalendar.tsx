@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react'
 import Layout from './Layout'
 import HomePageSvg from './background/HomepageSvg'
-import { Moods } from '@pom/shared-dtos'
+import { MoodValues } from '@pom/shared-dtos'
 import { generateFakeData } from '../../services/fakeData'
 import { useTranslation } from 'react-i18next'
 import { moodsProperties } from '../../utils/moodsProperties'
+import { Bell, Timer } from 'lucide-react'
+import { Button } from '../ui/button'
 
 const daysOfWeek = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
 
 const getMonday = (currentDate: Date): Date => {
   const day = currentDate.getDay()
-  const diff = day === 0 ? -6 : 1
+  const diff = day === 0 ? -6 : 1 - day
   const monday = new Date(currentDate)
   monday.setDate(currentDate.getDate() + diff)
   return monday
@@ -22,10 +24,11 @@ const formatDate = (date: Date): string => {
 
 function MoodCalendar() {
   const { t } = useTranslation('common', { keyPrefix: 'MoodCalendar' })
-  const [userMood, setUserMood] = useState<Moods | null>(null)
+  const [userMood, setUserMood] = useState<MoodValues | null>(null)
   // Index du jour actuel
   const [currentDayIndex] = useState(new Date().getDay() - 1)
-  const [historicalMoods, setHistoricalMoods] = useState<{ date: string; mood: Moods }[]>([])
+  const [historicalMoods, setHistoricalMoods] = useState<{ date: string; mood: MoodValues }[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [tasks, setTasks] = useState<{ title: string; duration: number; background: string }[]>([])
   // Dates dynamiques de la semaine
   const [weekDates, setWeekDates] = useState<string[]>([])
@@ -41,21 +44,20 @@ function MoodCalendar() {
     setWeekDates(dates)
 
     // Récupérer l'humeur stockée dans le localStorage
-    const storedMood = localStorage.getItem('userMood') as Moods
-    if (storedMood && Object.values(Moods).includes(storedMood)) {
+    const storedMood = localStorage.getItem('userMood') as MoodValues
+    if (storedMood && Object.values(MoodValues).includes(storedMood)) {
       setUserMood(storedMood)
       console.log('Stored mood:', storedMood)
 
-      const taskProps = moodsProperties[storedMood]?.task
-      if (taskProps) {
-        console.log('Mood task:', taskProps)
-        setTasks([
-          {
-            title: taskProps.title,
-            duration: taskProps.duration || 0,
-            background: taskProps.background,
-          },
-        ])
+      const tasks = moodsProperties[storedMood]?.task
+      if (tasks) {
+        setTasks(
+          tasks.map((task) => ({
+            title: task.title,
+            duration: task.duration || 0,
+            background: task.background,
+          }))
+        )
       }
     }
 
@@ -65,12 +67,8 @@ function MoodCalendar() {
 
   return (
     <Layout background="bg-tertiary" svg={<HomePageSvg fill="#364861" width="100%" height="auto" />}>
-      <Layout.Header className="absolute h-1/2 w-full flex justify-center items-center">
-        <div className="border w-[360px] h-[180px] rounded-lg flex flex-col justify-around p-6 ">
-          <div className="flex justify-between items-center">
-            <h2 className="text-xl font-medium">{t('title.myWeek')}</h2>
-          </div>
-
+      <Layout.Header>
+        <div className="border w-3/4 h-auto rounded-lg flex flex-col justify-around p-6 ">
           <div className="grid grid-cols-7 gap-8 ">
             {daysOfWeek.map((day, index) => {
               let emoji = null
@@ -89,7 +87,7 @@ function MoodCalendar() {
                   <span className="text-2xl">{emoji}</span>
                   <div className="flex flex-col">
                     <span className="font-medium"> {index === currentDayIndex ? 'Auj' : day}</span>
-                    <span className="text-sm text-gray-500">{weekDates[index]}</span>
+                    <span className="text-xs text-gray-500">{weekDates[index]}</span>
                   </div>
                 </div>
               )
@@ -97,22 +95,36 @@ function MoodCalendar() {
           </div>
         </div>
       </Layout.Header>
-      <Layout.Content className="h-full items-center justify-center">
+      <Layout.Content>
         {userMood && (
           <ul>
-            {tasks.map((task, index) => {
-              return (
-                <li key={index}>
-                  <div className={`w-[345px] h-[95px] p-6 rounded-3xl ${task.background}`}>
-                    <p>{task.title}</p>
-                    <p>{task.duration} min</p>
+            {moodsProperties[userMood]?.task?.map((task, index) => (
+              <li key={index} className="mb-4">
+                <div
+                  className={`w-[345px] h-[100px]  rounded-3xl ${task.background} flex flex-col gap-2 pt-5 pl-7`}
+                >
+                  <p className="font-bold text-white">{task.title}</p>
+                  <div className="flex gap-3">
+                    <div className="bg-white w-[68px] h-[28px] rounded-3xl flex items-center justify-center gap-1">
+                      <Timer style={{ width: '16px', color: '#FFB76D' }} />
+                      <p className="text-lightBlack font-semibold text-xs">{task.duration} min</p>
+                    </div>
+                    <div className="border-2 border-white w-[68px] h-[28px] rounded-3xl flex items-center justify-center gap-1">
+                      <Bell style={{ width: '16px', color: '#FFB76D' }} />
+                      <p className="text-white font-semibold text-xs">{task.reminderTime}</p>
+                    </div>
                   </div>
-                </li>
-              )
-            })}
+                </div>
+              </li>
+            ))}
           </ul>
         )}
       </Layout.Content>
+      <Layout.Footer className="justify-center mt-auto">
+        <Button>
+          <span>+</span>Ajouter une nouvelle activité
+        </Button>
+      </Layout.Footer>
     </Layout>
   )
 }
