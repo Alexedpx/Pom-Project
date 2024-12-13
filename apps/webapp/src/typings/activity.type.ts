@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-export interface TaskType {
+export interface ActivityType {
   icon?: ReactElement
   title: string
   details?: string

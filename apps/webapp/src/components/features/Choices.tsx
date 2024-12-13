@@ -7,8 +7,8 @@ import ReactEmojis from '@souhaildev/reactemojis'
 import { toast, Toaster } from 'sonner'
 import { useNavigate } from 'react-router'
 import EmojiButton from './buttons/EmojiButtons'
-import { MoodValues } from '@pom/shared-dtos'
-import { moodsProperties } from '../../utils/moodsProperties'
+import { Mood } from '@pom/shared-dtos'
+import { moodProperties } from '../../utils/moodProperties'
 import LeftWaveSvg from './background/LeftWaveSvg'
 
 function Choices() {
@@ -16,11 +16,11 @@ function Choices() {
     keyPrefix: 'Choices',
   })
   const navigate = useNavigate()
-  const [selectedMood, setSelectedMood] = useState<MoodValues | null>(null)
-  const currentMood = selectedMood ? moodsProperties[selectedMood] : null
+  const [selectedMood, setSelectedMood] = useState<Mood>()
+  const currentMood = selectedMood ? moodProperties[selectedMood] : null
 
   // Change les propriétés selon l'emoji sélectionné
-  const handleIconClick = (emoji: MoodValues) => {
+  const handleIconClick = (emoji: Mood) => {
     setSelectedMood(emoji)
   }
 
@@ -43,17 +43,18 @@ function Choices() {
       >
         <Layout.Header>
           {selectedMood ? (
-            <h1 className="font-semibold text-4xl">{t(moodsProperties[selectedMood].text)}</h1>
+            <h1 className="font-semibold text-4xl">{t(moodProperties[selectedMood].text)}</h1>
           ) : (
             <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
           )}
         </Layout.Header>
-        <Layout.Content className="text-center justify-center ">
+        <Layout.Content className=" text-center justify-center ">
           {selectedMood ? (
             <ReactEmojis
-              emoji={moodsProperties[selectedMood].emoji}
+              emoji={moodProperties[selectedMood].emoji}
               emojiStyle="3"
               style={{ width: 180, height: 180 }}
+              // className="animate-bounceEmoji"
             />
           ) : (
             <h2 className="font-semibold text-2xl">{t('content.howDoYouFeelToday')}</h2>
@@ -61,10 +62,10 @@ function Choices() {
         </Layout.Content>
         <Layout.Footer className="gap-6 flex-col ">
           <div className="flex gap-2 justify-center">
-            {Object.values(MoodValues).map((emoji) => (
+            {Object.values(Mood).map((emoji) => (
               <EmojiButton
                 key={emoji}
-                emoji={moodsProperties[emoji].emoji}
+                emoji={moodProperties[emoji].emoji}
                 onClick={() => handleIconClick(emoji)}
               />
             ))}
@@ -73,7 +74,7 @@ function Choices() {
           {selectedMood ? (
             <Button
               onClick={handleValidate}
-              variant={moodsProperties[selectedMood].buttonVariant}
+              variant={moodProperties[selectedMood].buttonVariant}
               size="default"
               className="text-xl font-normal"
               iconRight={<Check className="ml-1" />}

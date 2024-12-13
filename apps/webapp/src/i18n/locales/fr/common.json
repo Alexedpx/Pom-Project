@@ -26,7 +26,9 @@
       "myWeek": "Ma semaine"
     },
     "content": {
-      "yourDailyProgram": "Votre programme du jour"
+      "yourDailyProgram": "Votre programme du jour",
+      "activitiesList": "Liste d'activités",
+      "seeAll": "Tout voir"
     }
   }
 }

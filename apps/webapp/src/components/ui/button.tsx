@@ -9,16 +9,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-primary text-primary-foreground shadow-xl ',
+        secondary: 'bg-audio',
         icon: 'border-2 bg-secondary transition-transform duration-300 ease-in-out hover:scale-110',
         veryHappy: 'bg-veryHappy-foreground shadow shadow-xl ',
         happy: 'bg-happy-foreground shadow-xl ',
         sad: 'bg-sad-foreground shadow-xl ',
         angry: 'bg-angry-foreground shadow-xl ',
         tired: 'bg-tired-foreground shadow-xl',
-
         destructive: 'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline: 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
-        secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
+
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
       },

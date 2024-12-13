@@ -1,4 +1,4 @@
-export enum TaskCategories {
+export enum Category {
   SPORTY = 'SPORTY',
   CREATIVE = 'CREATIVE',
   CEREBRAL = 'CEREBRAL',

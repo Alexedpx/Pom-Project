@@ -1,2 +1,2 @@
-export * from './enum/moodValues.enum'
-export * from './enum/taskCategories.enum'
+export * from './enum/mood.enum'
+export * from './enum/category.enum'

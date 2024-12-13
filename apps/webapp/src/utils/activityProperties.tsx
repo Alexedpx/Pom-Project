@@ -1,10 +1,9 @@
-import { TaskType } from '@/typings/task.type'
-import { TaskCategories } from '@pom/shared-dtos'
-import { Brush } from 'lucide-react'
+import { ActivityType } from '@/typings/activity.type'
 import IconLeaves from '../assets/svg/icon-leaves.svg'
+import { Category } from '@pom/shared-dtos'
 
-export const tasksProperties: Record<TaskCategories, TaskType> = {
-  [TaskCategories.SPORTY]: {
+export const activity: Record<Category, ActivityType> = {
+  [Category.SPORTY]: {
     // icon: <Dumbell />,
     title: 'Effectuer 20 squats',
     details: '',
@@ -12,7 +11,7 @@ export const tasksProperties: Record<TaskCategories, TaskType> = {
     background: 'bg-sporty',
     reminderTime: '14:00',
   },
-  [TaskCategories.AUDIO]: {
+  [Category.AUDIO]: {
     // icon: <Headphones />,
     title: 'Ecouter un podcast',
     details: '',
@@ -20,7 +19,7 @@ export const tasksProperties: Record<TaskCategories, TaskType> = {
     background: 'bg-audio',
     reminderTime: '09:00',
   },
-  [TaskCategories.CEREBRAL]: {
+  [Category.CEREBRAL]: {
     // icon: <Brain />,
     title: 'Faire un sudoku',
     details: '',
@@ -28,7 +27,7 @@ export const tasksProperties: Record<TaskCategories, TaskType> = {
     background: 'bg-cerebral',
     reminderTime: '08:00',
   },
-  [TaskCategories.RELAXATION]: {
+  [Category.RELAXATION]: {
     icon: <IconLeaves />,
     title: 'Faire 5 respirations profondes',
     details: '',
@@ -36,8 +35,8 @@ export const tasksProperties: Record<TaskCategories, TaskType> = {
     background: 'bg-relaxation',
     reminderTime: '18:00',
   },
-  [TaskCategories.CREATIVE]: {
-    icon: <Brush />,
+  [Category.CREATIVE]: {
+    // icon: <Brush />,
     title: 'Ecrire ses pensées',
     details: '',
     duration: 5,

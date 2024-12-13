@@ -9,12 +9,12 @@ function Layout({ children, background, svg }: PropsWithChildren<{ background: s
   )
 }
 
-function Header({ children }: PropsWithChildren<{ className?: string }>) {
-  return <div className="flex h-1/4 w-full justify-center items-center ">{children}</div>
+function Header({ children, className }: PropsWithChildren<{ className?: string }>) {
+  return <div className={`flex h-1/4 w-full justify-center items-center ${className}`}>{children}</div>
 }
 
-function Section({ children }: PropsWithChildren<{ className?: string }>) {
-  return <div className="flex flex-col w-full mt-auto ">{children}</div>
+function Section({ children, className }: PropsWithChildren<{ className?: string }>) {
+  return <div className={`flex flex-col w-full mt-auto ${className}`}>{children}</div>
 }
 
 function Content({ children, className }: PropsWithChildren<{ className?: string }>) {
