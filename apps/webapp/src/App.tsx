@@ -4,21 +4,17 @@ import Choices from './components/features/Choices'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import MoodCalendar from './components/features/MoodCalendar'
 
-
 function App(): JSX.Element {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Choices />
-
+      element: <Choices />,
     },
     {
       path: '/homepage',
-      element: <MoodCalendar />
-
+      element: <MoodCalendar />,
     },
   ])
-
 
   return (
     <I18nextProvider i18n={i18n}>
@@ -26,6 +22,5 @@ function App(): JSX.Element {
     </I18nextProvider>
   )
 }
-
 
 export default App

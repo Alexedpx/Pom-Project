@@ -1,9 +1,8 @@
 import { faker } from '@faker-js/faker'
-import { Moods } from '@pom/shared-dtos'
+import { MoodValues } from '@pom/shared-dtos'
 
 export const generateFakeData = (num: number) => {
-  const moods: Moods[] = Object.values(Moods)
-
+  const moods: MoodValues[] = Object.values(MoodValues)
 
   const fakeMoods = Array.from({ length: num }).map(() => {
     const randomMood = moods[Math.floor(Math.random() * moods.length)]
@@ -12,10 +11,9 @@ export const generateFakeData = (num: number) => {
       to: new Date(Date.now()),
     })
 
-
-    const month = randomDate.getMonth() + 1;
-    const date = randomDate.getDate().toString().padStart(2, '0');
-    const formattedDate = `${date}/${month}`;
+    const month = randomDate.getMonth() + 1
+    const date = randomDate.getDate().toString().padStart(2, '0')
+    const formattedDate = `${date}/${month}`
 
     return {
       mood: randomMood,
