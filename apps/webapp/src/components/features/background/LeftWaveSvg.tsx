@@ -7,7 +7,7 @@ interface SvgComponentProps {
   className?: string
 }
 
-const HomepageSvg: React.FC<SvgComponentProps> = ({
+const LeftWaveSvg: React.FC<SvgComponentProps> = ({
   fill = '#685176',
   width = '100%',
   height = 'auto',
@@ -31,4 +31,4 @@ const HomepageSvg: React.FC<SvgComponentProps> = ({
   )
 }
 
-export default HomepageSvg
+export default LeftWaveSvg

@@ -8,8 +8,8 @@ import { toast, Toaster } from 'sonner'
 import { useNavigate } from 'react-router'
 import EmojiButton from './buttons/EmojiButtons'
 import { MoodValues } from '@pom/shared-dtos'
-import CustomSvg from './background/MoodSvg'
 import { moodsProperties } from '../../utils/moodsProperties'
+import LeftWaveSvg from './background/LeftWaveSvg'
 
 function Choices() {
   const { t } = useTranslation('common', {
@@ -39,16 +39,16 @@ function Choices() {
       <Toaster position="top-center" />
       <Layout
         background={currentMood?.background || 'bg-tertiary'}
-        svg={currentMood?.moodSvg || <CustomSvg />}
+        svg={currentMood?.moodSvg || <LeftWaveSvg />}
       >
         <Layout.Header>
           {selectedMood ? (
-            <h1 className="font-semibold text-4xl text-white">{t(moodsProperties[selectedMood].text)}</h1>
+            <h1 className="font-semibold text-4xl">{t(moodsProperties[selectedMood].text)}</h1>
           ) : (
             <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
           )}
         </Layout.Header>
-        <Layout.Content>
+        <Layout.Content className="text-center justify-center ">
           {selectedMood ? (
             <ReactEmojis
               emoji={moodsProperties[selectedMood].emoji}
@@ -59,7 +59,7 @@ function Choices() {
             <h2 className="font-semibold text-2xl">{t('content.howDoYouFeelToday')}</h2>
           )}
         </Layout.Content>
-        <Layout.Footer className="gap-8 flex-col ">
+        <Layout.Footer className="gap-6 flex-col ">
           <div className="flex gap-2 justify-center">
             {Object.values(MoodValues).map((emoji) => (
               <EmojiButton
@@ -75,7 +75,7 @@ function Choices() {
               onClick={handleValidate}
               variant={moodsProperties[selectedMood].buttonVariant}
               size="default"
-              className="text-xl font-normal text-white"
+              className="text-xl font-normal"
               iconRight={<Check className="ml-1" />}
             >
               {t('button.validate')}
