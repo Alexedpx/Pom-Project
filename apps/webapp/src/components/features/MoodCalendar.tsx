@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import Layout from './Layout'
-import HomePageSvg from './background/HomepageSvg'
 import { MoodValues } from '@pom/shared-dtos'
 import { generateFakeData } from '../../services/fakeData'
 import { useTranslation } from 'react-i18next'
 import { moodsProperties } from '../../utils/moodsProperties'
-import { Bell, Timer } from 'lucide-react'
+import { Bell, Play, Timer } from 'lucide-react'
 import { Button } from '../ui/button'
+import { useNavigate } from 'react-router'
+import RightWaveSvg from './background/RightWaveSvg'
 
 const daysOfWeek = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
 
@@ -24,6 +25,7 @@ const formatDate = (date: Date): string => {
 
 function MoodCalendar() {
   const { t } = useTranslation('common', { keyPrefix: 'MoodCalendar' })
+  const navigate = useNavigate()
   const [userMood, setUserMood] = useState<MoodValues | null>(null)
   // Index du jour actuel
   const [currentDayIndex] = useState(new Date().getDay() - 1)
@@ -65,10 +67,14 @@ function MoodCalendar() {
     setHistoricalMoods(fakeMoods)
   }, [currentDayIndex])
 
+  const addActivites = () => {
+    navigate('/activities')
+  }
+
   return (
-    <Layout background="bg-tertiary" svg={<HomePageSvg fill="#364861" width="100%" height="auto" />}>
+    <Layout background="bg-tertiary" svg={<RightWaveSvg />}>
       <Layout.Header>
-        <div className="border w-3/4 h-auto rounded-lg flex flex-col justify-around p-6 ">
+        <div className="border h-auto rounded-lg flex flex-col justify-around p-8 ">
           <div className="grid grid-cols-7 gap-8 ">
             {daysOfWeek.map((day, index) => {
               let emoji = null
@@ -83,10 +89,13 @@ function MoodCalendar() {
               }
 
               return (
-                <div key={index} className="flex flex-col justify-between items-center text-center h-full">
-                  <span className="text-2xl">{emoji}</span>
+                <div
+                  key={index}
+                  className="flex flex-col justify-between items-center text-center gap-2 h-full"
+                >
+                  <span className="text-3xl">{emoji}</span>
                   <div className="flex flex-col">
-                    <span className="font-medium"> {index === currentDayIndex ? 'Auj' : day}</span>
+                    <span className="text-sm font-medium"> {index === currentDayIndex ? 'Auj' : day}</span>
                     <span className="text-xs text-gray-500">{weekDates[index]}</span>
                   </div>
                 </div>
@@ -95,24 +104,41 @@ function MoodCalendar() {
           </div>
         </div>
       </Layout.Header>
+      <Layout.Section>
+        <h1 className="mb-6 pl-2 text-xl font-semibold">{t('content.yourDailyProgram')}</h1>
+        <div className="flex justify-between items-center  pl-2 pr-2">
+          <div className="w-fit ">
+            <p className="text-sm font-medium">Liste d'activités</p>
+            <p className="mb-6 text-xs font-extralight">Activités réalisées (0/3)</p>
+          </div>
+          <p className="text-sm font-light text-gray-400">Tout voir</p>
+        </div>
+      </Layout.Section>
       <Layout.Content>
         {userMood && (
           <ul>
             {moodsProperties[userMood]?.task?.map((task, index) => (
-              <li key={index} className="mb-4">
+              <li key={index} className="mb-3">
                 <div
-                  className={`w-[345px] h-[100px]  rounded-3xl ${task.background} flex flex-col gap-2 pt-5 pl-7`}
+                  className={`w-[345px] h-[100px] rounded-3xl ${task.background} flex justify-around gap-2  `}
                 >
-                  <p className="font-bold text-white">{task.title}</p>
-                  <div className="flex gap-3">
-                    <div className="bg-white w-[68px] h-[28px] rounded-3xl flex items-center justify-center gap-1">
-                      <Timer style={{ width: '16px', color: '#FFB76D' }} />
-                      <p className="text-lightBlack font-semibold text-xs">{task.duration} min</p>
+                  <div className="flex gap-1 flex-col w-fit justify-center ">
+                    <p className="font-medium">{task.title}</p>
+                    <div className="flex gap-4">
+                      <div className="bg-softWhite w-[68px] h-[28px] rounded-3xl flex items-center justify-center gap-1 ">
+                        <Timer style={{ width: '16px', color: '#FFB76D' }} />
+                        <p className="text-lightBlack font-semibold text-xs">{task.duration} min</p>
+                      </div>
+                      <div className="border-2 border-softWhite w-[68px] h-[28px] rounded-3xl flex items-center justify-center gap-1">
+                        <Bell style={{ width: '14px', color: '#FFB76D' }} />
+                        <p className=" font-semibold text-xs">{task.reminderTime}</p>
+                      </div>
                     </div>
-                    <div className="border-2 border-white w-[68px] h-[28px] rounded-3xl flex items-center justify-center gap-1">
-                      <Bell style={{ width: '16px', color: '#FFB76D' }} />
-                      <p className="text-white font-semibold text-xs">{task.reminderTime}</p>
-                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <Button variant="icon" size="md">
+                      <Play style={{ fill: '#2D3342', color: '#2D3342' }} />
+                    </Button>
                   </div>
                 </div>
               </li>
@@ -120,10 +146,8 @@ function MoodCalendar() {
           </ul>
         )}
       </Layout.Content>
-      <Layout.Footer className="justify-center mt-auto">
-        <Button>
-          <span>+</span>Ajouter une nouvelle activité
-        </Button>
+      <Layout.Footer>
+        <Button onClick={addActivites}>+ Ajouter une nouvelle activité</Button>
       </Layout.Footer>
     </Layout>
   )

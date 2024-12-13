@@ -10,7 +10,11 @@ export const moodsProperties: Record<MoodValues, MoodType> = {
     moodSvg: <MoodSvg fill="#5E9268" />,
     text: 'moods.veryGood',
     buttonVariant: 'veryHappy',
-    task: [tasksProperties[TaskCategories.SPORTY], tasksProperties[TaskCategories.AUDIO]],
+    task: [
+      tasksProperties[TaskCategories.AUDIO],
+      tasksProperties[TaskCategories.SPORTY],
+      tasksProperties[TaskCategories.CEREBRAL],
+    ],
   },
   [MoodValues.GOOD]: {
     emoji: '🙂',

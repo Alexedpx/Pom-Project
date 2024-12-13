@@ -54,6 +54,10 @@ module.exports = {
           DEFAULT: 'hsl(var(--tertiary))',
           foreground: 'hsl(var(--tertiary-foreground))',
         },
+        softWhite: {
+          DEFAULT: 'hsl(var(--softWhite))',
+          foreground: 'hsl(var(--softWhite-foreground))',
+        },
         veryHappy: {
           DEFAULT: 'hsl(var(--veryHappy))',
           foreground: 'hsl(var(--veryHappy-foreground))',

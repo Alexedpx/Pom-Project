@@ -10,6 +10,7 @@
     --lightBlack: 229, 14%, 23%;
     --secondary: 215, 28%, 30%;
     --tertiary: 221, 20%, 20%;
+    --softWhite: 0, 11%, 95%;
     --lightBlue: 215, 24%, 51%;
     --softBlue: 215, 28%, 30%;
     --sporty: 268, 19%, 59%;
@@ -84,7 +85,8 @@
 @layer base {
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: 'text-softWhite';
     margin: 0;
     padding: 0;
   }
