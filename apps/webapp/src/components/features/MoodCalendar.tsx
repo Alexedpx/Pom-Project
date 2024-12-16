@@ -8,6 +8,7 @@ import { Bell, Play, Timer } from 'lucide-react'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router'
 import RightWaveSvg from './background/RightWaveSvg'
+import { activity } from '../../utils/activityProperties'
 
 //todo : use date-fns
 const daysOfWeek = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
@@ -28,16 +29,13 @@ function MoodCalendar() {
   const { t } = useTranslation('common', { keyPrefix: 'MoodCalendar' })
   const navigate = useNavigate()
   const [userMood, setUserMood] = useState<Mood | null>(null)
-  // Index du jour actuel
   const [currentDayIndex] = useState(new Date().getDay() - 1)
   const [historicalMoods, setHistoricalMoods] = useState<{ date: string; mood: Mood }[]>([])
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activities, setActivities] = useState<{ title: string; duration: number; background: string }[]>([])
-  // Dates dynamiques de la semaine
+
   const [weekDates, setWeekDates] = useState<string[]>([])
 
   useEffect(() => {
-    // Calculer les dates de la semaine actuelle
     const monday = getMonday(new Date())
     const dates = Array.from({ length: 7 }, (_, i) => {
       const date = new Date(monday)
@@ -46,19 +44,19 @@ function MoodCalendar() {
     })
     setWeekDates(dates)
 
-    // Récupérer l'humeur stockée dans le localStorage
     const storedMood = localStorage.getItem('userMood') as Mood
     if (storedMood && Object.values(Mood).includes(storedMood)) {
       setUserMood(storedMood)
       console.log('Stored mood:', storedMood)
 
-      const activities = moodProperties[storedMood]?.activities
-      if (activities) {
+      const activities = activity[storedMood.toUpperCase() as keyof typeof activity] || []
+      if (activities.length > 0) {
         setActivities(
           activities.map((activity) => ({
             title: activity.title,
             duration: activity.duration || 0,
             background: activity.background,
+            reminderTime: activity.reminderTime,
           }))
         )
       }

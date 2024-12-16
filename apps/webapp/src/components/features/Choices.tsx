@@ -18,10 +18,17 @@ function Choices() {
   const navigate = useNavigate()
   const [selectedMood, setSelectedMood] = useState<Mood>()
   const currentMood = selectedMood ? moodProperties[selectedMood] : null
+  const [isBouncing, setIsBouncing] = useState(false)
 
-  // Change les propriétés selon l'emoji sélectionné
   const handleIconClick = (emoji: Mood) => {
-    setSelectedMood(emoji)
+    if (emoji !== selectedMood) {
+      setSelectedMood(emoji)
+      setIsBouncing(true)
+
+      setTimeout(() => {
+        setIsBouncing(false)
+      }, 800)
+    }
   }
 
   const handleValidate = () => {
@@ -54,7 +61,7 @@ function Choices() {
               emoji={moodProperties[selectedMood].emoji}
               emojiStyle="3"
               style={{ width: 180, height: 180 }}
-              // className="animate-bounceEmoji"
+              className={isBouncing ? 'animate-bounceEmoji' : ''}
             />
           ) : (
             <h2 className="font-semibold text-2xl">{t('content.howDoYouFeelToday')}</h2>

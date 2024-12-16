@@ -6,11 +6,14 @@ module.exports = {
     extend: {
       keyframes: {
         bounceEmoji: {
-          '0%, 100%': {
+          '0%': {
             transform: 'translateY(0)',
           },
-          '50%': {
-            transform: 'translateY(-10px)',
+          '30%': {
+            transform: 'translateY(-100px)',
+          },
+          '100%': {
+            transform: 'translateY(0)',
           },
         },
 
@@ -30,7 +33,7 @@ module.exports = {
       },
       animation: {
         wave: 'wave 4s infinite',
-        bounceEmoji: 'bounceEmoji 0.8s ease-in-out infinite',
+        bounceEmoji: 'bounceEmoji 0.8s cubic-bezier(0.25, 1, 0.5, 1)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -125,6 +128,9 @@ module.exports = {
         },
         lightBlue: {
           DEFAULT: 'hsl(var(--lightBlue))',
+        },
+        checkbox: {
+          DEFAULT: 'hsl(var(--checkbox))',
         },
 
         input: 'hsl(var(--input))',

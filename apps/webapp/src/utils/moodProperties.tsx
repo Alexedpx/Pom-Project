@@ -10,7 +10,11 @@ export const moodProperties: Record<Mood, MoodType> = {
     moodSvg: <MoodSvg fill="#5E9268" />,
     text: 'moods.veryGood',
     buttonVariant: 'veryHappy',
-    activities: [activity[Category.AUDIO], activity[Category.SPORTY], activity[Category.CEREBRAL]],
+    activities: [
+      activity[Category.AUDIO][Math.floor(Math.random() * activity[Category.AUDIO].length)],
+      activity[Category.SPORTY][Math.floor(Math.random() * activity[Category.SPORTY].length)],
+      activity[Category.CEREBRAL][Math.floor(Math.random() * activity[Category.CEREBRAL].length)],
+    ],
   },
   [Mood.GOOD]: {
     emoji: '🙂',
@@ -18,7 +22,7 @@ export const moodProperties: Record<Mood, MoodType> = {
     moodSvg: <MoodSvg fill="#FECF58" />,
     text: 'moods.good',
     buttonVariant: 'happy',
-    activities: [activity[Category.CEREBRAL]],
+    activities: [activity[Category.CEREBRAL][Math.floor(Math.random() * activity[Category.CEREBRAL].length)]],
   },
   [Mood.QUITE_SAD]: {
     emoji: '😓',
@@ -26,7 +30,7 @@ export const moodProperties: Record<Mood, MoodType> = {
     moodSvg: <MoodSvg fill="#2E4574" />,
     text: 'moods.quiteSad',
     buttonVariant: 'sad',
-    activities: [activity[Category.CREATIVE]],
+    activities: [activity[Category.CREATIVE][Math.floor(Math.random() * activity[Category.CREATIVE].length)]],
   },
   [Mood.ANGRY]: {
     emoji: '😡',
@@ -34,7 +38,9 @@ export const moodProperties: Record<Mood, MoodType> = {
     moodSvg: <MoodSvg fill="#CE6C5F" />,
     text: 'moods.angry',
     buttonVariant: 'angry',
-    activities: [activity[Category.RELAXATION]],
+    activities: [
+      activity[Category.RELAXATION][Math.floor(Math.random() * activity[Category.RELAXATION].length)],
+    ],
   },
   [Mood.TIRED]: {
     emoji: '🥱',
@@ -42,6 +48,6 @@ export const moodProperties: Record<Mood, MoodType> = {
     moodSvg: <MoodSvg fill="#392645" />,
     text: 'moods.tired',
     buttonVariant: 'tired',
-    activities: [activity[Category.AUDIO]],
+    activities: [activity[Category.AUDIO][Math.floor(Math.random() * activity[Category.AUDIO].length)]],
   },
 }
