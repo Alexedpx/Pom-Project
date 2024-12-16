@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next'
 import { Button } from '../ui/button'
-import Layout from './Layout'
 import { useState } from 'react'
 import { Check } from 'lucide-react'
 import ReactEmojis from '@souhaildev/reactemojis'
 import { toast, Toaster } from 'sonner'
 import { useNavigate } from 'react-router'
-import EmojiButton from './buttons/EmojiButtons'
 import { Mood } from '@pom/shared-dtos'
 import { moodProperties } from '../../utils/moodProperties'
-import LeftWaveSvg from './background/LeftWaveSvg'
+import Layout from '../layout/Layout'
+import LeftWaveSvg from '../features/background/LeftWaveSvg'
+import EmojiButton from '../features/buttons/EmojiButtons'
 
 function Choices() {
   const { t } = useTranslation('common', {
@@ -17,8 +17,8 @@ function Choices() {
   })
   const navigate = useNavigate()
   const [selectedMood, setSelectedMood] = useState<Mood>()
-  const currentMood = selectedMood ? moodProperties[selectedMood] : null
   const [isBouncing, setIsBouncing] = useState(false)
+  const currentMood = selectedMood ? moodProperties[selectedMood] : null
 
   const handleIconClick = (emoji: Mood) => {
     if (emoji !== selectedMood) {
@@ -35,7 +35,7 @@ function Choices() {
     if (selectedMood) {
       localStorage.setItem('userMood', selectedMood)
       toast.success('Your mood has been saved !')
-      setTimeout(() => navigate('/homepage'), 1500)
+      setTimeout(() => navigate('/dashboard'), 1500)
     } else {
       toast.error(t('toast.error'))
     }

@@ -1,15 +1,19 @@
 import { Check } from 'lucide-react'
 import { Button } from '../ui/button'
-import LeftWaveSvg from './background/LeftWaveSvg'
-import Layout from './Layout'
 import { useState } from 'react'
 import { activity } from '../../utils/activityProperties'
 import { Category } from '@pom/shared-dtos'
 import { Input } from '../ui/input'
 import { Checkbox } from '../ui/checkbox'
+import { useTranslation } from 'react-i18next'
+import Layout from '../layout/Layout'
+import LeftWaveSvg from '../features/background/LeftWaveSvg'
 
-function NewActivities() {
+function AddActivity() {
+  const { t } = useTranslation('common', { keyPrefix: 'NewActivities' })
   const [selectedCategory, setSelectedCategory] = useState<string>('')
+  // const [duration, setDuration]= useState<string>('')
+  // const [reminder, setReminder]= useState<number>()
 
   const handleDisplayCategory = (category: string) => {
     setSelectedCategory(category)
@@ -20,7 +24,7 @@ function NewActivities() {
     <>
       <Layout background="bg-tertiary" svg={<LeftWaveSvg fill="#364861" />}>
         <Layout.Section className="flex gap-5">
-          <h1>Sélectionnez une catégorie</h1>
+          <h1>{t('title.selectCategory')}</h1>
           <div className="flex justify-between">
             <Button
               variant="icon"
@@ -66,10 +70,10 @@ function NewActivities() {
           </div>
         </Layout.Section>
         <Layout.Section className="flex gap-6">
-          <h1>Sélectionnez les activités à effectuer</h1>
+          <h1>{t('title.chooseActivities')}</h1>
 
           <div className="flex justify-between ">
-            {selectedActivities.length > 0 ? (
+            {selectedActivities.length &&
               selectedActivities.map((activityItem) => (
                 <div
                   key={activityItem.title}
@@ -85,14 +89,11 @@ function NewActivities() {
                     </h1>
                   </div>
                 </div>
-              ))
-            ) : (
-              <p>Aucune activité disponible pour cette catégorie.</p>
-            )}
+              ))}
           </div>
         </Layout.Section>
         <Layout.Section className="flex gap-6">
-          <h1>Définissez la durée et l'heure du rappel</h1>
+          <h1>{t('title.defineDurationAndReminderTime')}</h1>
           <div className="flex justify-between">
             {/* <Timer
                 className="bg-creative-foreground w-7 h-7 rounded-md p-1"
@@ -121,11 +122,12 @@ function NewActivities() {
         </Layout.Section>
         <Layout.Footer>
           <Button variant="secondary">
-            Valider l’activité <Check />
+            {t('button.validateActivity')}
+            <Check />
           </Button>
         </Layout.Footer>
       </Layout>
     </>
   )
 }
-export default NewActivities
+export default AddActivity

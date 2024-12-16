@@ -1,28 +1,46 @@
 import { ActivityType } from '@/typings/activity.type'
 import { Category } from '@pom/shared-dtos'
 
+const sportyBenefits = [
+  {
+    details: 'Amélioration cardiovasculaire',
+  },
+  {
+    details: 'Clarté mentale',
+  },
+  {
+    details: 'Réduction du stress',
+  },
+  {
+    details: "Boost de l'énergie",
+  },
+]
+
 export const activity: Record<Category, ActivityType[]> = {
   [Category.SPORTY]: [
     {
-      title: 'Effectuer 20 squats',
-      details: '',
+      title: 'Activité physique',
+      details: 'Effectuer 20 squats',
       duration: 2,
+      benefits: sportyBenefits.join(', '),
       background: 'bg-sporty',
       checkboxColor: 'bg-primary',
       reminderTime: '14:00',
     },
     {
-      title: 'Faire 10 pompes',
-      details: '',
+      title: 'Activité physique',
+      details: 'Faire 20 pompes',
       duration: 3,
+      benefits: sportyBenefits.join(', '),
       background: 'bg-sporty',
       checkboxColor: 'bg-primary',
       reminderTime: '15:00',
     },
     {
-      title: 'Courir 5 km',
-      details: '',
+      title: 'Activité physique',
+      details: 'Courir 5km',
       duration: 30,
+      benefits: sportyBenefits.join(', '),
       background: 'bg-sporty',
       checkboxColor: 'bg-primary',
       reminderTime: '16:00',
@@ -30,24 +48,24 @@ export const activity: Record<Category, ActivityType[]> = {
   ],
   [Category.AUDIO]: [
     {
-      title: 'Ecouter un podcast',
-      details: '',
+      title: 'Activité Audio',
+      details: 'Ecouter un podcast',
       duration: 10,
       background: 'bg-audio',
       checkboxColor: 'bg-audio-foreground',
       reminderTime: '09:00',
     },
     {
-      title: 'Ecouter de la musique',
-      details: 'Choisir une playlist relaxante.',
+      title: 'Activité Audio',
+      details: 'Choisir une playlist relaxante',
       duration: 15,
       background: 'bg-audio',
       checkboxColor: 'bg-audio-foreground',
       reminderTime: '11:00',
     },
     {
-      title: 'Ecouter de la musique',
-      details: 'Choisir une playlist relaxante.',
+      title: 'Activité Audio',
+      details: 'Choisir une playlist relaxante',
       duration: 15,
       background: 'bg-audio',
       checkboxColor: 'bg-audio-foreground',

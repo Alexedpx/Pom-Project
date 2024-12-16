@@ -5,6 +5,7 @@ export interface ActivityType {
   title: string
   details?: string
   duration?: number
+  benefits?: string
   background: string
   checkboxColor?: string
   reminderTime?: string

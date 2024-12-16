@@ -21,14 +21,29 @@
     }
   },
 
-  "MoodCalendar": {
+  "DailyOverview": {
     "title": {
-      "myWeek": "Ma semaine"
+      "myWeek": "Ma semaine",
+      "yourDailyProgram": "Votre programme du jour"
     },
     "content": {
-      "yourDailyProgram": "Votre programme du jour",
       "activitiesList": "Liste d'activités",
+      "activitiesDone": "Activités réalisées",
       "seeAll": "Tout voir"
+    },
+    "button": {
+      "addNewActivities": "Ajouter une nouvelle activité"
+    }
+  },
+
+  "NewActivities": {
+    "title": {
+      "selectCategory": "Sélectionnez une catégorie",
+      "chooseActivities": "Choisissez une ou plusieurs activités",
+      "defineDurationAndReminderTime": "Définissez la durée et l'heure du rappel"
+    },
+    "button": {
+      "validateActivity": "Valider l'activité"
     }
   }
 }
