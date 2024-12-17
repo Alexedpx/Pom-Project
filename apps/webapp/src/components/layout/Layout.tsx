@@ -18,7 +18,7 @@ function Section({ children, className }: PropsWithChildren<{ className?: string
 }
 
 function Content({ children, className }: PropsWithChildren<{ className?: string }>) {
-  return <div className={`flex flex-col flex-grow w-full items-center ${className}`}>{children}</div>
+  return <div className={`flex flex-col flex-grow w-full  ${className}`}>{children}</div>
 }
 
 function Footer({ children, className }: PropsWithChildren<{ className?: string }>) {

@@ -55,7 +55,7 @@ function Choices() {
             <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
           )}
         </Layout.Header>
-        <Layout.Content className=" text-center justify-center ">
+        <Layout.Content className=" text-center justify-center items-center">
           {selectedMood ? (
             <ReactEmojis
               emoji={moodProperties[selectedMood].emoji}

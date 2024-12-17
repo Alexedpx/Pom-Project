@@ -45,5 +45,13 @@
     "button": {
       "validateActivity": "Valider l'activité"
     }
+  },
+  "ActivityDetails": {
+    "title": {
+      "benefits": "Bienfaits"
+    },
+    "button": {
+      "markAsDone": "Marquer comme terminée"
+    }
   }
 }

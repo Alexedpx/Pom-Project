@@ -1,1 +1,1 @@
-export type EmojiType = '😀' | '🙂' | '😓' | '😡' | '🥱'
+export type EmojiType = '😀' | '🙂' | '😓' | '😡' | '🥱' | '❤️' | '✨' | '⚡' | '🔥' | '💪' | ''

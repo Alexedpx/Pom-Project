@@ -3,6 +3,7 @@ import { Mood } from '@pom/shared-dtos'
 import { moodProperties } from '../../utils/moodProperties'
 import { generateFakeData } from '../../services/fakeData'
 import { formatDate, getDaysOfWeek } from '../../utils/date'
+import ReactEmojis from '@souhaildev/reactemojis'
 
 const daysOfWeek = getDaysOfWeek()
 
@@ -53,7 +54,11 @@ function MoodCalendar({ onMoodChange }: MoodCalendarProps) {
 
           return (
             <div key={index} className="flex flex-col justify-between items-center text-center gap-2 h-full">
-              <span className="text-3xl">{emoji}</span>
+              <span className="text-3xl">
+                {' '}
+                <ReactEmojis emoji={emoji} emojiStyle="3" style={{ width: 35, height: 35 }} />
+              </span>
+
               <div className="flex flex-col">
                 <span className="text-sm font-medium">{index === currentDayIndex ? 'AUJ' : day}</span>
                 <span className="text-xs text-gray-500">{weekDates[index]}</span>

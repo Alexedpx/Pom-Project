@@ -32,7 +32,7 @@ function CurrentActivities() {
   }
 
   // Fonction qui démarre l'activité
-  const startActivity = (activityDetails: {
+  const addActivity = (activityDetails: {
     title: string
     benefits: string
     details: string
@@ -51,7 +51,7 @@ function CurrentActivities() {
               <div
                 className={`w-[345px] h-[100px] rounded-3xl ${activity.background} flex justify-around gap-2`}
               >
-                <div className="flex gap-1 flex-col w-fit justify-center">
+                <div className="flex gap-1 flex-col justify-center">
                   <p className="font-medium">{activity.details}</p>
                   <div className="flex gap-4">
                     <Badge variant="default">
@@ -65,7 +65,7 @@ function CurrentActivities() {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <Button variant="icon" size="md" onClick={() => startActivity(activity)}>
+                  <Button variant="icon" size="md" onClick={() => addActivity(activity)}>
                     <Play style={{ fill: '#2D3342', color: '#2D3342' }} />
                   </Button>
                 </div>
