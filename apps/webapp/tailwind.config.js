@@ -16,6 +16,11 @@ module.exports = {
             transform: 'translateY(0)',
           },
         },
+        popIn: {
+          '0%': { opacity: '0', transform: 'scale(0.8)' },
+          '60%': { opacity: '1', transform: 'scale(1.05)' },
+          '100%': { transform: 'scale(1)' },
+        },
 
         wave: {
           '0%': {
@@ -34,6 +39,7 @@ module.exports = {
       animation: {
         wave: 'wave 4s infinite',
         bounceEmoji: 'bounceEmoji 0.8s cubic-bezier(0.25, 1, 0.5, 1)',
+        popIn: 'popIn 0.5s ease-out forwards',
       },
       borderRadius: {
         lg: 'var(--radius)',

@@ -17,19 +17,24 @@ function DailyOverview() {
     navigate('/activities')
   }
 
+  const seeAll = () => {
+    navigate('/all')
+  }
   return (
     <Layout background="bg-tertiary" svg={<RightWaveSvg />}>
       <Layout.Header>
         <MoodCalendar onMoodChange={setUserMood} />
       </Layout.Header>
       <Layout.Section>
-        <h1 className="mb-6 pl-2 text-xl font-semibold">{t('title.yourDailyProgram')}</h1>
-        <div className="flex justify-between items-center pl-2 pr-2">
-          <div className="w-fit ">
+        <h1 className="mb-4 mt-4 pl-2 text-xl font-semibold ">{t('title.yourDailyProgram')}</h1>
+        <div className="flex justify-between items-center pl-2 pr-2 mb-6">
+          <div className="w-fit">
             <p className="text-sm font-medium">{t('content.activitiesList')}</p>
-            <p className="mb-6 text-xs font-extralight">{t('content.activitiesDone')} (0/3)</p>
+            <p className="text-xs font-extralight">{t('content.activitiesDone')}(0/3)</p>
           </div>
-          <p className="text-sm font-light text-gray-400">{t('content.seeAll')}</p>
+          <p onClick={seeAll} className="cursor-pointer text-sm font-light text-gray-400">
+            {t('content.seeAll')}
+          </p>
         </div>
       </Layout.Section>
       <Layout.Content>

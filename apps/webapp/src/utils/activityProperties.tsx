@@ -11,7 +11,6 @@ import {
 export const activity: Record<Category, ActivityType[]> = {
   [Category.SPORTY]: [
     {
-      emoji:''
       title: 'Activité physique',
       details: 'Effectuer 20 squats',
       duration: 2,

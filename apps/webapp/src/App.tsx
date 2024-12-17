@@ -5,6 +5,7 @@ import Choices from './components/mood/Choices'
 import DailyOverview from './components/dashboard/DailyOverview'
 import AddActivity from './components/activities/AddActivity'
 import ActivityDetails from './components/activities/ActivityDetails'
+import AllActivities from './components/activities/AllActivities'
 
 function App(): JSX.Element {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App(): JSX.Element {
     {
       path: '/details',
       element: <ActivityDetails />,
+    },
+    {
+      path: '/all',
+      element: <AllActivities />,
     },
   ])
 

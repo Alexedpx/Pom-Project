@@ -17,9 +17,9 @@ function ActivityDetails() {
   return (
     <>
       <Layout background="bg-tertiary" svg={<EllipseSvg />}>
-        <Layout.Header className="flex flex-col gap-6">
+        <Layout.Header className=" flex-col gap-3">
           <h1 className="text-2xl font-bold">{activityDetails.title}</h1>
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-2">
             <h2 className="text-sm">{activityDetails.details}</h2>
             <Badge variant="default">
               <Timer style={{ width: '16px', color: '#FFB76D' }} />
@@ -28,7 +28,7 @@ function ActivityDetails() {
           </div>
         </Layout.Header>
         <Layout.Content className="justify-center mt-16">
-          {/* <h1 className="pl-2 font-semibold text-xl">{t('title.benefits')}</h1> */}
+          <h1 className="pl-2 mb-6 font-semibold text-2xl">{t('title.benefits')}</h1>
           <div className="gap-3 grid grid-cols-2 ">
             {activityDetails.benefits?.map((benefit, index) => {
               const isLargeBlock = index % 4 === 0 || index % 4 === 3
@@ -40,12 +40,12 @@ function ActivityDetails() {
                   key={index}
                   className={`${
                     isLargeBlock ? 'col-span-2 row-span-2' : 'col-span-1 row-span-1'
-                  } h-24 bg-audio rounded-lg shadow-lg flex flex-col relative `}
+                  } h-24 bg-audio rounded-lg shadow-lg flex flex-col relative animate-popIn`}
                 >
-                  <div className="absolute w-full flex justify-end p-3">
-                    <ReactEmojis emoji={benefit.emoji} emojiStyle="2" style={{ width: 35, height: 35 }} />
+                  <div className="absolute w-full flex justify-end p-4">
+                    <ReactEmojis emoji={benefit.emoji} emojiStyle="2" style={{ width: 30, height: 35 }} />
                   </div>
-                  <div className="flex h-full flex-col justify-end p-4">
+                  <div className="flex h-full flex-col justify-end p-5">
                     <span className="text-sm font-light ">{firstWord}</span>
                     <span className="text-xl font-bold">{secondWord}</span>
                   </div>

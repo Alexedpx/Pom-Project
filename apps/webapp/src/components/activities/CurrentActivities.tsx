@@ -7,13 +7,13 @@ import { Mood } from '@pom/shared-dtos'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { Badge } from '../ui/badge'
+import { ActivityType } from '@/typings/activity.type'
+import { Benefit } from '@/typings/benefit.type'
 
 function CurrentActivities() {
   useTranslation('common', { keyPrefix: 'CurrentActivities' })
   const navigate = useNavigate()
-  const [, setActivities] = useState<
-    { details: string; duration: number; background: string; reminderTime: string }[]
-  >([])
+  const [, setActivities] = useState<ActivityType[]>([])
 
   const storedMood = localStorage.getItem('userMood') as Mood
   const activitiesList = activity[storedMood.toUpperCase() as keyof typeof activity] || []
@@ -22,7 +22,7 @@ function CurrentActivities() {
     setActivities(
       activitiesList.map((activity) => ({
         title: activity.title,
-        benefits: activity.benefits || '',
+        benefits: activity.benefits || [],
         details: activity.details || '',
         duration: activity.duration || 0,
         background: activity.background,
@@ -34,7 +34,7 @@ function CurrentActivities() {
   // Fonction qui démarre l'activité
   const addActivity = (activityDetails: {
     title: string
-    benefits: string
+    benefits: Benefit[]
     details: string
     duration: number
     background: string
@@ -45,9 +45,9 @@ function CurrentActivities() {
   return (
     <>
       {storedMood && (
-        <ul>
+        <ul className="h-full flex flex-col gap-4">
           {moodProperties[storedMood]?.activities?.map((activity, index) => (
-            <li key={index} className="mb-3">
+            <li key={index} className="flex">
               <div
                 className={`w-[345px] h-[100px] rounded-3xl ${activity.background} flex justify-around gap-2`}
               >

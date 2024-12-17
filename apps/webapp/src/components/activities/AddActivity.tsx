@@ -76,15 +76,15 @@ function AddActivity() {
             {selectedActivities.length &&
               selectedActivities.map((activityItem) => (
                 <div
-                  key={activityItem.title}
+                  key={activityItem.details}
                   className={`w-[110px] h-[120px] rounded-xl p-3 ${activityItem.background}`}
                 >
                   <div className="flex flex-col items-end justify-around h-full">
                     <Checkbox className={`${activityItem.checkboxColor}`} />
                     <h1 className="flex flex-col w-full ">
-                      <span className="font-light text-xs">{activityItem.title.split(' ')[0]}</span>
+                      <span className="font-light text-xs">{activityItem.details.split(' ')[0]}</span>
                       <span className="font-semibold text-xs">
-                        {activityItem.title.slice(activityItem.title.indexOf(' ') + 1)}
+                        {activityItem.details.slice(activityItem.details.indexOf(' ') + 1)}
                       </span>
                     </h1>
                   </div>
@@ -92,10 +92,10 @@ function AddActivity() {
               ))}
           </div>
         </Layout.Section>
-        <Layout.Section className="flex gap-6">
+        {/* <Layout.Section className="flex gap-6">
           <h1>{t('title.defineDurationAndReminderTime')}</h1>
           <div className="flex justify-between">
-            {/* <Timer
+             <Timer
                 className="bg-creative-foreground w-7 h-7 rounded-md p-1"
                 style={{
                   position: 'absolute',
@@ -104,10 +104,10 @@ function AddActivity() {
                   transform: 'translateY(-50%)',
                   color: '#FFB76D',
                 }}
-              /> */}
+              /> 
             <Input type="number" className="pl-9" />
 
-            {/* <Bell
+             <Bell
                 className="bg-creative-foreground w-7 h-7 rounded-md p-1"
                 style={{
                   position: 'absolute',
@@ -116,12 +116,12 @@ function AddActivity() {
                   transform: 'translateY(-50%)',
                   color: '#FFB76D',
                 }}
-              /> */}
+              /> 
             <Input type="time" className="pl-9" />
           </div>
-        </Layout.Section>
+        </Layout.Section> */}
         <Layout.Footer>
-          <Button variant="secondary">
+          <Button variant="default">
             {t('button.validateActivity')}
             <Check />
           </Button>

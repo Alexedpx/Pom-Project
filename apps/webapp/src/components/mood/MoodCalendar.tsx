@@ -54,10 +54,9 @@ function MoodCalendar({ onMoodChange }: MoodCalendarProps) {
 
           return (
             <div key={index} className="flex flex-col justify-between items-center text-center gap-2 h-full">
-              <span className="text-3xl">
-                {' '}
-                <ReactEmojis emoji={emoji} emojiStyle="3" style={{ width: 35, height: 35 }} />
-              </span>
+              <div className="bg-black/40 rounded-full w-10 h-10 flex items-center justify-center">
+                <ReactEmojis emoji={emoji} emojiStyle="3" style={{ width: 30, height: 30 }} />
+              </div>
 
               <div className="flex flex-col">
                 <span className="text-sm font-medium">{index === currentDayIndex ? 'AUJ' : day}</span>
