@@ -9,16 +9,16 @@ function Layout({ children, background, svg }: PropsWithChildren<{ background: s
   )
 }
 
-function Header({ children }: PropsWithChildren<{ className?: string }>) {
-  return <div className="flex h-1/4 w-full justify-center items-center ">{children}</div>
-}
-
-function Section({ children }: PropsWithChildren<{ className?: string }>) {
-  return <div className="flex flex-col w-full mt-auto ">{children}</div>
+function Header({ children, className }: PropsWithChildren<{ className?: string }>) {
+  return <div className={`flex h-1/4 w-full justify-center items-center ${className}`}>{children}</div>
 }
 
 function Content({ children, className }: PropsWithChildren<{ className?: string }>) {
-  return <div className={`flex flex-col flex-grow w-full items-center ${className}`}>{children}</div>
+  return <div className={`flex flex-col flex-grow w-full  ${className}`}>{children}</div>
+}
+
+function Section({ children, className }: PropsWithChildren<{ className?: string }>) {
+  return <div className={`flex flex-col w-full ${className}`}>{children}</div>
 }
 
 function Footer({ children, className }: PropsWithChildren<{ className?: string }>) {

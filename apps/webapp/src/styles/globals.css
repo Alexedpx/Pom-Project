@@ -6,7 +6,8 @@
 
 @layer base {
   :root {
-    --primary: 277 20%, 47%;
+    --primary: 277 16%, 43%;
+    --secondary: 0, 0%, 12%;
     --lightBlack: 229, 14%, 23%;
     --secondary: 215, 28%, 30%;
     --tertiary: 221, 20%, 20%;
@@ -15,9 +16,13 @@
     --softBlue: 215, 28%, 30%;
     --sporty: 268, 19%, 59%;
     --audio: 223, 21%, 13%;
+    --audio-foreground: 215, 10%, 23%;
     --relaxation: 113, 22%, 67%;
+    --relaxation-foreground: 132, 31%, 83%;
     --cerebral: 348, 48%, 75%;
+    --cerebral-foreground: 346, 60%, 88%;
     --creative: 30, 100%, 71%;
+    --creative-foreground: 30, 87%, 84%;
     --veryHappy: 132, 25%, 63%;
     --veryHappy-foreground: 132, 26%, 38%;
     --happy: 43, 100%, 78%;
@@ -44,6 +49,7 @@
     --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
+    --checkbox: 268, 24%, 70%;
 
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;

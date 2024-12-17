@@ -5,6 +5,23 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
+        bounceEmoji: {
+          '0%': {
+            transform: 'translateY(0)',
+          },
+          '30%': {
+            transform: 'translateY(-100px)',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+          },
+        },
+        popIn: {
+          '0%': { opacity: '0', transform: 'scale(0.8)' },
+          '60%': { opacity: '1', transform: 'scale(1.05)' },
+          '100%': { transform: 'scale(1)' },
+        },
+
         wave: {
           '0%': {
             d: 'path("M0.00259399 248.858C0.530426 204.882 81.8907 162.076 405.189 337L420 -3H0.00259399V248.858C-0.000854492 249.146 -0.000854492 249.435 0.00259399 249.723V248.858Z")',
@@ -21,6 +38,8 @@ module.exports = {
       },
       animation: {
         wave: 'wave 4s infinite',
+        bounceEmoji: 'bounceEmoji 0.8s cubic-bezier(0.25, 1, 0.5, 1)',
+        popIn: 'popIn 0.5s ease-out forwards',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -115,6 +134,9 @@ module.exports = {
         },
         lightBlue: {
           DEFAULT: 'hsl(var(--lightBlue))',
+        },
+        checkbox: {
+          DEFAULT: 'hsl(var(--checkbox))',
         },
 
         input: 'hsl(var(--input))',

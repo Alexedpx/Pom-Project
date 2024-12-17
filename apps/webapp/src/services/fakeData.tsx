@@ -1,8 +1,9 @@
 import { faker } from '@faker-js/faker'
-import { MoodValues } from '@pom/shared-dtos'
+import { Mood } from '@pom/shared-dtos'
 
+//todo créer le service (usermood)
 export const generateFakeData = (num: number) => {
-  const moods: MoodValues[] = Object.values(MoodValues)
+  const moods: Mood[] = Object.values(Mood)
 
   const fakeMoods = Array.from({ length: num }).map(() => {
     const randomMood = moods[Math.floor(Math.random() * moods.length)]

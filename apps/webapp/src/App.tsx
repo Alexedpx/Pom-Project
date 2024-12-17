@@ -1,9 +1,11 @@
 import { I18nextProvider } from 'react-i18next'
 import i18n from './i18n/config'
-import Choices from './components/features/Choices'
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import MoodCalendar from './components/features/MoodCalendar'
-import NewActivities from './components/features/NewActivities'
+import Choices from './components/mood/Choices'
+import DailyOverview from './components/dashboard/DailyOverview'
+import AddActivity from './components/activities/AddActivity'
+import ActivityDetails from './components/activities/ActivityDetails'
+import AllActivities from './components/activities/AllActivities'
 
 function App(): JSX.Element {
   const router = createBrowserRouter([
@@ -12,12 +14,20 @@ function App(): JSX.Element {
       element: <Choices />,
     },
     {
-      path: '/homepage',
-      element: <MoodCalendar />,
+      path: '/dashboard',
+      element: <DailyOverview />,
     },
     {
       path: '/activities',
-      element: <NewActivities />,
+      element: <AddActivity />,
+    },
+    {
+      path: '/details',
+      element: <ActivityDetails />,
+    },
+    {
+      path: '/all',
+      element: <AllActivities />,
     },
   ])
 

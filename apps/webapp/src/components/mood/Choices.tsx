@@ -1,34 +1,41 @@
 import { useTranslation } from 'react-i18next'
 import { Button } from '../ui/button'
-import Layout from './Layout'
 import { useState } from 'react'
 import { Check } from 'lucide-react'
 import ReactEmojis from '@souhaildev/reactemojis'
 import { toast, Toaster } from 'sonner'
 import { useNavigate } from 'react-router'
-import EmojiButton from './buttons/EmojiButtons'
-import { MoodValues } from '@pom/shared-dtos'
-import { moodsProperties } from '../../utils/moodsProperties'
-import LeftWaveSvg from './background/LeftWaveSvg'
+import { Mood } from '@pom/shared-dtos'
+import { moodProperties } from '../../utils/moodProperties'
+import Layout from '../layout/Layout'
+import LeftWaveSvg from '../features/background/LeftWaveSvg'
+import EmojiButton from '../features/buttons/EmojiButtons'
 
 function Choices() {
   const { t } = useTranslation('common', {
     keyPrefix: 'Choices',
   })
   const navigate = useNavigate()
-  const [selectedMood, setSelectedMood] = useState<MoodValues | null>(null)
-  const currentMood = selectedMood ? moodsProperties[selectedMood] : null
+  const [selectedMood, setSelectedMood] = useState<Mood>()
+  const [isBouncing, setIsBouncing] = useState(false)
+  const currentMood = selectedMood ? moodProperties[selectedMood] : null
 
-  // Change les propriétés selon l'emoji sélectionné
-  const handleIconClick = (emoji: MoodValues) => {
-    setSelectedMood(emoji)
+  const handleIconClick = (emoji: Mood) => {
+    if (emoji !== selectedMood) {
+      setSelectedMood(emoji)
+      setIsBouncing(true)
+
+      setTimeout(() => {
+        setIsBouncing(false)
+      }, 800)
+    }
   }
 
   const handleValidate = () => {
     if (selectedMood) {
       localStorage.setItem('userMood', selectedMood)
       toast.success('Your mood has been saved !')
-      setTimeout(() => navigate('/homepage'), 1500)
+      setTimeout(() => navigate('/dashboard'), 1500)
     } else {
       toast.error(t('toast.error'))
     }
@@ -43,17 +50,18 @@ function Choices() {
       >
         <Layout.Header>
           {selectedMood ? (
-            <h1 className="font-semibold text-4xl">{t(moodsProperties[selectedMood].text)}</h1>
+            <h1 className="font-semibold text-4xl">{t(moodProperties[selectedMood].text)}</h1>
           ) : (
             <h1 className="font-semibold text-4xl">{t('header.hello')}</h1>
           )}
         </Layout.Header>
-        <Layout.Content className="text-center justify-center ">
+        <Layout.Content className=" text-center justify-center items-center">
           {selectedMood ? (
             <ReactEmojis
-              emoji={moodsProperties[selectedMood].emoji}
+              emoji={moodProperties[selectedMood].emoji}
               emojiStyle="3"
               style={{ width: 180, height: 180 }}
+              className={isBouncing ? 'animate-bounceEmoji' : ''}
             />
           ) : (
             <h2 className="font-semibold text-2xl">{t('content.howDoYouFeelToday')}</h2>
@@ -61,10 +69,10 @@ function Choices() {
         </Layout.Content>
         <Layout.Footer className="gap-6 flex-col ">
           <div className="flex gap-2 justify-center">
-            {Object.values(MoodValues).map((emoji) => (
+            {Object.values(Mood).map((emoji) => (
               <EmojiButton
                 key={emoji}
-                emoji={moodsProperties[emoji].emoji}
+                emoji={moodProperties[emoji].emoji}
                 onClick={() => handleIconClick(emoji)}
               />
             ))}
@@ -73,7 +81,7 @@ function Choices() {
           {selectedMood ? (
             <Button
               onClick={handleValidate}
-              variant={moodsProperties[selectedMood].buttonVariant}
+              variant={moodProperties[selectedMood].buttonVariant}
               size="default"
               className="text-xl font-normal"
               iconRight={<Check className="ml-1" />}
