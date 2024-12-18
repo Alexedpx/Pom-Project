@@ -22,7 +22,6 @@ function CurrentActivities() {
     setActivities(
       activitiesList.map((activity) => ({
         title: activity.title,
-        benefits: activity.benefits || [],
         details: activity.details || '',
         duration: activity.duration || 0,
         background: activity.background,
@@ -59,13 +58,25 @@ function CurrentActivities() {
                       <p className="text-lightBlack font-semibold text-xs">{activity.duration} min</p>
                     </Badge>
                     <Badge variant="outline">
-                      <Bell style={{ width: '14px', color: '#FFB76D' }} />
+                      <Bell style={{ width: '16px', color: '#FFB76D' }} />
                       <p className="font-semibold text-xs">{activity.reminderTime}</p>
                     </Badge>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <Button variant="icon" size="md" onClick={() => addActivity(activity)}>
+                  <Button
+                    variant="icon"
+                    size="md"
+                    onClick={() =>
+                      addActivity({
+                        title: activity.title,
+                        benefits: activity.benefits || [],
+                        details: activity.details,
+                        duration: activity.duration,
+                        background: activity.background,
+                      })
+                    }
+                  >
                     <Play style={{ fill: '#2D3342', color: '#2D3342' }} />
                   </Button>
                 </div>

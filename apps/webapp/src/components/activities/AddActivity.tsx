@@ -3,7 +3,6 @@ import { Button } from '../ui/button'
 import { useState } from 'react'
 import { activity } from '../../utils/activityProperties'
 import { Category } from '@pom/shared-dtos'
-import { Input } from '../ui/input'
 import { Checkbox } from '../ui/checkbox'
 import { useTranslation } from 'react-i18next'
 import Layout from '../layout/Layout'
@@ -18,7 +17,7 @@ function AddActivity() {
   const handleDisplayCategory = (category: string) => {
     setSelectedCategory(category)
   }
-  const selectedActivities = activity[selectedCategory as Category] || []
+  const selectedActivities = (selectedCategory && activity[selectedCategory as Category]) || []
 
   return (
     <>
@@ -73,23 +72,28 @@ function AddActivity() {
           <h1>{t('title.chooseActivities')}</h1>
 
           <div className="flex justify-between ">
-            {selectedActivities.length &&
-              selectedActivities.map((activityItem) => (
-                <div
-                  key={activityItem.details}
-                  className={`w-[110px] h-[120px] rounded-xl p-3 ${activityItem.background}`}
-                >
-                  <div className="flex flex-col items-end justify-around h-full">
-                    <Checkbox className={`${activityItem.checkboxColor}`} />
-                    <h1 className="flex flex-col w-full ">
-                      <span className="font-light text-xs">{activityItem.details.split(' ')[0]}</span>
-                      <span className="font-semibold text-xs">
-                        {activityItem.details.slice(activityItem.details.indexOf(' ') + 1)}
-                      </span>
-                    </h1>
-                  </div>
-                </div>
-              ))}
+            {selectedActivities.length > 0 &&
+              selectedActivities.map(
+                (activityItem) =>
+                  activityItem.details && (
+                    <div
+                      key={activityItem.details}
+                      className={`w-[110px] h-[120px] rounded-xl p-3 ${
+                        activityItem.background || 'bg-default'
+                      }`}
+                    >
+                      <div className="flex flex-col items-end justify-around h-full">
+                        <Checkbox className={activityItem.checkboxColor || 'default'} />
+                        <h1 className="flex flex-col w-full">
+                          <span className="font-light text-xs">{activityItem.details.split(' ')[0]}</span>
+                          <span className="font-semibold text-xs">
+                            {activityItem.details.slice(activityItem.details.indexOf(' ') + 1)}
+                          </span>
+                        </h1>
+                      </div>
+                    </div>
+                  )
+              )}
           </div>
         </Layout.Section>
         {/* <Layout.Section className="flex gap-6">

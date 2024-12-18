@@ -9,6 +9,8 @@ import {
 } from './benefitProperties'
 
 export const activity: Record<Category, ActivityType[]> = {
+  [Category.ALL]: [],
+
   [Category.SPORTY]: [
     {
       title: 'Activité physique',

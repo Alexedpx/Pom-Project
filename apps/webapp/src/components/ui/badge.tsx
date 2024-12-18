@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '../../lib/utils'
-const badgeVariants = cva('w-[68px] h-[28px] rounded-3xl flex items-center justify-center gap-1', {
+const badgeVariants = cva('w-fit px-3 py-1 rounded-3xl flex items-center justify-center gap-1', {
   variants: {
     variant: {
       default: 'bg-softWhite',
+      primary: 'bg-primary border-transparent',
       secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
       destructive:
         'border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80',

@@ -1,4 +1,5 @@
 export enum Category {
+  ALL = 'ALL',
   SPORTY = 'SPORTY',
   CREATIVE = 'CREATIVE',
   CEREBRAL = 'CEREBRAL',

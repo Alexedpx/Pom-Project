@@ -53,5 +53,27 @@
     "button": {
       "markAsDone": "Marquer comme terminée"
     }
+  },
+  "AllActivities": {
+    "title": {
+      "allActivities": "Toutes les activités"
+    },
+    "footer": {
+      "saveFilter": "Appliquer les filtres"
+    }
+  },
+  "Filter": {
+    "categories": {
+      "ALL": "Toutes",
+      "SPORTY": "Physique",
+      "CREATIVE": "Créative",
+      "CEREBRAL": "Cérébrale",
+      "AUDIO": "Audio",
+      "RELAXATION": "Relaxation"
+    },
+    "status": {
+      "done": "Terminée",
+      "inProgress": "En cours"
+    }
   }
 }

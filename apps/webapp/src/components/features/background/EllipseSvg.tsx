@@ -22,7 +22,7 @@ const EllipseSvg: React.FC<SvgComponentProps> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="201" cy="80" r="245" fill={fill} />
+      <circle cx="201" cy="60" r="245" fill={fill} />
     </svg>
   )
 }

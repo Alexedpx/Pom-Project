@@ -6,13 +6,14 @@ import { Check, Timer } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import ReactEmojis from '@souhaildev/reactemojis'
 import { useTranslation } from 'react-i18next'
+import { ActivityType } from '@/typings/activity.type'
 
 function ActivityDetails() {
   const { t } = useTranslation('common', {
     keyPrefix: 'ActivityDetails',
   })
   const location = useLocation()
-  const activityDetails = location.state?.activityDetails
+  const activityDetails = location.state?.activityDetails as ActivityType
 
   return (
     <>
@@ -28,8 +29,8 @@ function ActivityDetails() {
           </div>
         </Layout.Header>
         <Layout.Content className="justify-center mt-16">
-          <h1 className="pl-2 mb-6 font-semibold text-2xl">{t('title.benefits')}</h1>
-          <div className="gap-3 grid grid-cols-2 ">
+          <h1 className="pl-2 mb-6 font-semibold text-xl">{t('title.benefits')}</h1>
+          <div className="gap-2 grid grid-cols-2 ">
             {activityDetails.benefits?.map((benefit, index) => {
               const isLargeBlock = index % 4 === 0 || index % 4 === 3
               const [firstWord, ...rest] = benefit.details.split(' ')

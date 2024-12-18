@@ -16,3 +16,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./enum/mood.enum"), exports);
 __exportStar(require("./enum/category.enum"), exports);
+__exportStar(require("./enum/status.enum"), exports);
