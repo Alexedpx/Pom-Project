@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Layout from '../layout/Layout'
 import EllipseSvg from '../features/background/EllipseSvg'
 import { Button } from '../ui/button'
@@ -7,20 +7,36 @@ import { Badge } from '../ui/badge'
 import ReactEmojis from '@souhaildev/reactemojis'
 import { useTranslation } from 'react-i18next'
 import { ActivityType } from '@/typings/activity.type'
+import { useState } from 'react'
 
 function ActivityDetails() {
   const { t } = useTranslation('common', {
     keyPrefix: 'ActivityDetails',
   })
   const location = useLocation()
+  const navigate = useNavigate()
   const activityDetails = location.state?.activityDetails as ActivityType
+
+  const [, setIsActivityDone] = useState(false)
+
+  const handleMarkAsDone = () => {
+    setIsActivityDone(true)
+    navigate('/dashboard')
+  }
 
   return (
     <>
       <Layout background="bg-tertiary" svg={<EllipseSvg />}>
-        <Layout.Header className=" flex-col gap-3">
+        <Layout.Header className=" flex-col gap-2">
+          <Button
+            variant="icon"
+            size="icon"
+            iconRight={activityDetails.icon}
+            className="bg-audio border-none shadow-xl"
+          />
+
           <h1 className="text-2xl font-bold">{activityDetails.title}</h1>
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-6">
             <h2 className="text-sm">{activityDetails.details}</h2>
             <Badge variant="default">
               <Timer style={{ width: '16px', color: '#FFB76D' }} />
@@ -56,7 +72,7 @@ function ActivityDetails() {
           </div>
         </Layout.Content>
         <Layout.Footer>
-          <Button variant="validate" iconRight={<Check className="ml-1" />}>
+          <Button variant="validate" onClick={handleMarkAsDone} iconRight={<Check className="ml-1" />}>
             {t('button.markAsDone')}
           </Button>
         </Layout.Footer>

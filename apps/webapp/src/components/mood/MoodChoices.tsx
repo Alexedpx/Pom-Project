@@ -11,7 +11,7 @@ import Layout from '../layout/Layout'
 import LeftWaveSvg from '../features/background/LeftWaveSvg'
 import EmojiButton from '../features/buttons/EmojiButtons'
 
-function Choices() {
+function MoodChoices() {
   const { t } = useTranslation('common', {
     keyPrefix: 'Choices',
   })
@@ -35,7 +35,7 @@ function Choices() {
     if (selectedMood) {
       localStorage.setItem('userMood', selectedMood)
       toast.success('Your mood has been saved !')
-      setTimeout(() => navigate('/dashboard'), 1500)
+      setTimeout(() => navigate('/tracker'), 1500)
     } else {
       toast.error(t('toast.error'))
     }
@@ -97,4 +97,4 @@ function Choices() {
   )
 }
 
-export default Choices
+export default MoodChoices

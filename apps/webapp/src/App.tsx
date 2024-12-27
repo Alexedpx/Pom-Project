@@ -1,17 +1,23 @@
 import { I18nextProvider } from 'react-i18next'
 import i18n from './i18n/config'
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import Choices from './components/mood/Choices'
+
 import DailyOverview from './components/dashboard/DailyOverview'
 import AddActivity from './components/activities/AddActivity'
 import ActivityDetails from './components/activities/ActivityDetails'
 import AllActivities from './components/activities/AllActivities'
+import MoodChoices from './components/mood/MoodChoices'
+import SleepDuration from './components/mood/SleepDuration'
 
 function App(): JSX.Element {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Choices />,
+      element: <MoodChoices />,
+    },
+    {
+      path: '/tracker',
+      element: <SleepDuration />,
     },
     {
       path: '/dashboard',

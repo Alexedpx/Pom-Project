@@ -60,6 +60,18 @@
     },
     "footer": {
       "saveFilter": "Appliquer les filtres"
+    },
+    "categories": {
+      "ALL": "Toutes",
+      "SPORTY": "Physique",
+      "CREATIVE": "Créative",
+      "CEREBRAL": "Cérébrale",
+      "AUDIO": "Audio",
+      "RELAXATION": "Relaxation"
+    },
+    "status": {
+      "done": "Terminée",
+      "inProgress": "En cours"
     }
   },
   "Filter": {

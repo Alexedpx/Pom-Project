@@ -1,12 +1,9 @@
 import { useState } from 'react'
-import { Timer, Bell, Play } from 'lucide-react'
-import { Button } from '../ui/button'
 import { activity } from '../../utils/activityProperties'
 import { moodProperties } from '../../utils/moodProperties'
 import { Mood } from '@pom/shared-dtos'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
-import { Badge } from '../ui/badge'
 import { ActivityType } from '@/typings/activity.type'
 import { Benefit } from '@/typings/benefit.type'
 
@@ -23,20 +20,19 @@ function CurrentActivities() {
       activitiesList.map((activity) => ({
         title: activity.title,
         details: activity.details || '',
-        duration: activity.duration || 0,
-        background: activity.background,
+        icon: activity.icon,
+        bgIcon: activity.bgIcon,
         reminderTime: activity.reminderTime || '',
       }))
     )
   }
 
-  // Fonction qui démarre l'activité
   const addActivity = (activityDetails: {
     title: string
+    icon: string
+    bgIcon: string
     benefits: Benefit[]
     details: string
-    duration: number
-    background: string
   }) => {
     navigate('/details', { state: { activityDetails } })
   }
@@ -46,39 +42,30 @@ function CurrentActivities() {
       {storedMood && (
         <ul className="h-full flex flex-col gap-4">
           {moodProperties[storedMood]?.activities?.map((activity, index) => (
-            <li key={index} className="flex">
-              <div
-                className={`w-[345px] h-[100px] rounded-3xl ${activity.background} flex justify-around gap-2`}
-              >
-                <div className="flex gap-1 flex-col justify-center">
-                  <p className="font-medium">{activity.details}</p>
-                  <div className="flex gap-4">
-                    <Badge variant="default">
-                      <Timer style={{ width: '16px', color: '#FFB76D' }} />
-                      <p className="text-lightBlack font-semibold text-xs">{activity.duration} min</p>
-                    </Badge>
-                    <Badge variant="outline">
-                      <Bell style={{ width: '16px', color: '#FFB76D' }} />
-                      <p className="font-semibold text-xs">{activity.reminderTime}</p>
-                    </Badge>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <Button
-                    variant="icon"
-                    size="md"
-                    onClick={() =>
-                      addActivity({
-                        title: activity.title,
-                        benefits: activity.benefits || [],
-                        details: activity.details,
-                        duration: activity.duration,
-                        background: activity.background,
-                      })
-                    }
+            <li
+              key={index}
+              className="flex cursor-pointer"
+              onClick={() =>
+                addActivity({
+                  title: activity.title,
+                  icon: activity.icon,
+                  bgIcon: activity.bgIcon,
+                  benefits: activity.benefits || [],
+                  details: activity.details,
+                })
+              }
+            >
+              <div className={`w-full h-[90px] rounded-3xl bg-audio flex justify-around cursor-pointer`}>
+                <div className="flex pl-10 items-center gap-8  w-full">
+                  <div
+                    className={`${activity.bgIcon} w-12 h-12 rounded-full flex items-center justify-center`}
                   >
-                    <Play style={{ fill: '#2D3342', color: '#2D3342' }} />
-                  </Button>
+                    {activity.icon}
+                  </div>
+                  <div className="flex flex-col">
+                    <span>{activity.title}</span>
+                    <span className="font-light text-sm text-gray-400">{activity.details}</span>
+                  </div>
                 </div>
               </div>
             </li>

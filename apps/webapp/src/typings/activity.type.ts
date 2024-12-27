@@ -4,10 +4,11 @@ import { EmojiType } from './emoji.types'
 export type ActivityType = {
   emoji?: EmojiType
   title: string
+  icon?: JSX.Element
+  bgIcon: string
   details: string
   duration?: number
   benefits?: Benefit[]
-  background: string
   checkboxColor?: string
   reminderTime?: string
 }

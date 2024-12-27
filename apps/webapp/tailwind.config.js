@@ -80,6 +80,7 @@ module.exports = {
         veryHappy: {
           DEFAULT: 'hsl(var(--veryHappy))',
           foreground: 'hsl(var(--veryHappy-foreground))',
+          dark: 'hsl(var(--veryHappy-dark))',
         },
         happy: {
           DEFAULT: 'hsl(var(--happy))',

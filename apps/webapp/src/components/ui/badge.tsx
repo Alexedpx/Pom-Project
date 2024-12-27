@@ -5,8 +5,9 @@ const badgeVariants = cva('w-fit px-3 py-1 rounded-3xl flex items-center justify
   variants: {
     variant: {
       default: 'bg-softWhite',
-      primary: 'bg-primary border-transparent',
+      primary: 'bg-primary text-softWhite border-transparent',
       secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
+      tertiary: 'bg-softBlue border-transparent text-softWhite',
       destructive:
         'border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80',
       outline: 'border-2 border-softWhite',

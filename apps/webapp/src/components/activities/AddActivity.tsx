@@ -31,7 +31,7 @@ function AddActivity() {
               className="bg-primary border-none shadow-xl"
               onClick={() => handleDisplayCategory(Category.SPORTY)}
             >
-              <div className="bg-sporty rounded-full p-3 shadow-xl">⚽</div>
+              <div className="bg-sporty rounded-full p-3 shadow-xl">🥊</div>
             </Button>
             <Button
               variant="icon"
@@ -76,12 +76,7 @@ function AddActivity() {
               selectedActivities.map(
                 (activityItem) =>
                   activityItem.details && (
-                    <div
-                      key={activityItem.details}
-                      className={`w-[110px] h-[120px] rounded-xl p-3 ${
-                        activityItem.background || 'bg-default'
-                      }`}
-                    >
+                    <div key={activityItem.details} className="w-[110px] h-[120px] rounded-xl p-3">
                       <div className="flex flex-col items-end justify-around h-full">
                         <Checkbox className={activityItem.checkboxColor || 'default'} />
                         <h1 className="flex flex-col w-full">

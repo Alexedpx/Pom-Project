@@ -26,12 +26,12 @@ function DailyOverview() {
         <MoodCalendar onMoodChange={setUserMood} />
       </Layout.Header>
       <Layout.Section>
-        <h1 className="mb-4 mt-4 pl-2 text-xl font-semibold ">{t('title.yourDailyProgram')}</h1>
+        <h1 className=" mt-4 pl-2 text-xl font-semibold ">Suggestions du jour</h1>
         <div className="flex justify-between items-center pl-2 pr-2 mb-6">
-          <div className="w-fit">
+          {/* <div className="w-fit">
             <p className="text-sm font-medium">{t('content.activitiesList')}</p>
             <p className="text-xs font-extralight">{t('content.activitiesDone')}(0/3)</p>
-          </div>
+          </div> */}
           <p onClick={seeAll} className="cursor-pointer text-sm font-light text-gray-400">
             {t('content.seeAll')}
           </p>
